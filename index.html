@@ -7,15 +7,17 @@
   <style>
     /* 기본 리셋 및 타이포 */
     :root {
-      --bg: #0e1116;
-      --panel: #11161f;
-      --accent: #5dd3ff;
-      --text: #e8edf2;
-      --muted: #9fb3c8;
-      --border: #1f2733;
+      /* 가독성 높은 소프트 다크 팔레트 */
+      --bg: #111725;
+      --panel: #182132;
+      --card: #1d283b;
+      --accent: #7cc4ff;
+      --text: #f3f6fb;
+      --muted: #a7b5c8;
+      --border: #253043;
       --max-width: 980px;
       --radius: 14px;
-      --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.30);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -95,7 +97,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 16px;
-      background: #0c1017;
+      background: var(--card);
     }
     .card h3 { margin-bottom: 8px; }
     .meta { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
@@ -115,7 +117,7 @@
   <div class="page">
     <div class="topbar">
       <div class="topbar-inner">
-        <div class="logo">Backend Portfolio</div>
+        <div class="logo">복권일 Portfolio</div>
         <nav>
           <a href="#hero">소개</a>
           <a href="#skills">역량</a>
