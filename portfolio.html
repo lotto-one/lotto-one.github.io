@@ -5,24 +5,269 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lottone Portfolio</title>
   <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    /* 페이지 진입 애니메이션 */
+    .page {
+      opacity: 0;
+      animation: pageFadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes pageFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Sidebar 스타일 */
+    body {
+      padding: 0 !important;
+      margin: 0 !important;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .page {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 0;
+      align-self: flex-start;
+      width: 240px;
+      height: 100vh;
+      max-height: 100vh;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideInLeft 0.6s ease-out 0.2s forwards;
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.2);
+      overflow-y: auto;
+      overflow-x: hidden;
+      flex-shrink: 0;
+    }
+
+    /* 사이드바 스크롤바 스타일링 */
+    .sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    .sidebar::-webkit-scrollbar-thumb:hover {
+      background: var(--muted);
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) !important;
+      }
+    }
+
+
+    .sidebar .logo {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+
+    .sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar nav a {
+      color: var(--muted);
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .sidebar nav a:hover {
+      color: var(--text);
+      background: rgba(124, 196, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .sidebar nav a.active {
+      color: var(--accent);
+      background: rgba(124, 196, 255, 0.15);
+    }
+
+    .sidebar nav a.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 60%;
+      background: var(--accent);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 0 18px 72px;
+      display: flex;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    /* 섹션 애니메이션 */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: sectionFadeIn 0.8s ease-out forwards;
+      scroll-margin-top: 40px;
+    }
+
+    section:nth-child(1) { animation-delay: 0.3s; }
+    section:nth-child(2) { animation-delay: 0.4s; }
+    section:nth-child(3) { animation-delay: 0.5s; }
+    section:nth-child(4) { animation-delay: 0.6s; }
+    section:nth-child(5) { animation-delay: 0.7s; }
+    section:nth-child(6) { animation-delay: 0.8s; }
+
+    @keyframes sectionFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 카드 애니메이션 */
+    .card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: cardFadeIn 0.6s ease-out forwards;
+    }
+
+    .grid .card:nth-child(1) { animation-delay: 0.5s; }
+    .grid .card:nth-child(2) { animation-delay: 0.6s; }
+    .grid .card:nth-child(3) { animation-delay: 0.7s; }
+    .grid .card:nth-child(4) { animation-delay: 0.8s; }
+
+    @keyframes cardFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Pill 애니메이션 */
+    .pill {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: pillFadeIn 0.4s ease-out forwards;
+    }
+
+    .row .pill:nth-child(1) { animation-delay: 0.4s; }
+    .row .pill:nth-child(2) { animation-delay: 0.5s; }
+    .row .pill:nth-child(3) { animation-delay: 0.6s; }
+    .row .pill:nth-child(4) { animation-delay: 0.7s; }
+
+    @keyframes pillFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* 스크롤 시 추가 애니메이션을 위한 클래스 */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .sidebar {
+        width: 180px;
+        padding: 24px 16px;
+      }
+      .sidebar .logo {
+        font-size: 18px;
+        margin-bottom: 32px;
+      }
+      .sidebar nav a {
+        padding: 10px 12px;
+        font-size: 13px;
+      }
+      .main-content {
+        padding: 0 12px 48px;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="page">
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="logo">Portfolio</div>
-        <nav>
-          <a href="#hero">소개</a>
-          <a href="#skills">역량</a>
-          <a href="#projects">프로젝트</a>
-          <a href="#experience">경험</a>
-          <a href="#writing">글/발표</a>
-          <a href="#contact">연락처</a>
-        </nav>
-      </div>
-    </div>
+    <aside class="sidebar">
+      <div class="logo">Portfolio</div>
+      <nav>
+        <a href="#hero" class="active">소개</a>
+        <a href="#skills">역량</a>
+        <a href="#projects">프로젝트</a>
+        <a href="#experience">경험</a>
+        <a href="#writing">글/발표</a>
+        <a href="#contact">연락처</a>
+      </nav>
+    </aside>
 
-    <main class="shell">
+    <div class="main-content">
+      <main class="shell">
     <section id="hero">
       <header>
         <div>
@@ -151,8 +396,95 @@
       </div>
       <div class="footer">Keep it concise. 숫자와 역할을 강조하세요.</div>
     </section>
-  </main>
+      </main>
+    </div>
   </div>
+
+  <script>
+    // 사이드바 네비게이션 활성 상태 관리
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.sidebar nav a');
+      const sections = document.querySelectorAll('section');
+
+      // 스크롤 시 활성 섹션 감지 (개선된 로직)
+      function updateActiveNav() {
+        const scrollPosition = window.scrollY + window.innerHeight / 3; // 화면 상단 1/3 지점 기준
+        let current = '';
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          const sectionId = section.getAttribute('id');
+
+          // 현재 스크롤 위치가 섹션의 상단과 하단 사이에 있는지 확인
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            current = sectionId;
+          }
+        });
+
+        // 첫 번째 섹션이 화면 상단에 있을 때
+        if (sections.length > 0 && window.scrollY < sections[0].offsetTop + 150) {
+          current = sections[0].getAttribute('id');
+        }
+
+        // 마지막 섹션에 도달했을 때
+        if (sections.length > 0) {
+          const lastSection = sections[sections.length - 1];
+          const lastSectionTop = lastSection.offsetTop;
+          const lastSectionHeight = lastSection.clientHeight;
+          if (window.scrollY + window.innerHeight >= lastSectionTop + lastSectionHeight - 150) {
+            current = lastSection.getAttribute('id');
+          }
+        }
+
+        // 활성 상태 업데이트
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // 클릭 시 부드러운 스크롤 및 활성 상태 업데이트
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          if (targetSection) {
+            // 활성 상태 즉시 업데이트
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            // 부드러운 스크롤
+            const offsetTop = targetSection.offsetTop - 40;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // 스크롤 이벤트 (throttle 적용)
+      let ticking = false;
+      function onScroll() {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            updateActiveNav();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      updateActiveNav(); // 초기 실행
+    });
+  </script>
 </body>
 </html>
 
