@@ -3,155 +3,411 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lottone Portfolio</title>
+  <title>Welcome - Lottone Portfolio</title>
   <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    /* 입장 페이지 전용 스타일 */
+    .entry-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #111725 0%, #182132 50%, #1d283b 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .entry-content {
+      width: 90%;
+      max-width: 700px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.2s ease-out forwards;
+    }
+
+    .terminal {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+    }
+
+    .terminal-header {
+      background: #161b22;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+
+    .terminal-body {
+      padding: 20px;
+      padding-bottom: 70px;
+      min-height: 200px;
+      color: #c9d1d9;
+      font-size: 14px;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .terminal-line {
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    .terminal-prompt {
+      color: #7cc4ff;
+      margin-right: 8px;
+    }
+
+    .terminal-command {
+      color: #c9d1d9;
+    }
+
+    .terminal-output {
+      color: #8b949e;
+      margin-left: 20px;
+    }
+
+    .terminal-output.success {
+      color: #3fb950;
+    }
+
+    .terminal-output.error {
+      color: #f85149;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--accent);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .compile-button {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', monospace;
+      color: #ffffff;
+      background: linear-gradient(135deg, #238636 0%, #2ea043 100%);
+      border: 1px solid #3fb950;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 2s forwards;
+      box-shadow: 0 4px 12px rgba(46, 160, 67, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .compile-button::before {
+      content: '▶';
+      font-size: 12px;
+      margin-right: 4px;
+    }
+
+    .compile-button:hover {
+      background: linear-gradient(135deg, #2ea043 0%, #3fb950 100%);
+      border-color: #4ecf5f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 160, 67, 0.4);
+    }
+
+    .compile-button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(46, 160, 67, 0.3);
+    }
+
+    .compile-button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      background: #1a5f28;
+      border-color: #1a5f28;
+      box-shadow: none;
+    }
+
+    .compile-button:disabled::before {
+      content: '⏸';
+    }
+
+    .typing {
+      border-right: 2px solid var(--accent);
+      animation: blink 1s infinite;
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 20px rgba(124, 196, 255, 0.5);
+      }
+      to {
+        text-shadow: 0 0 30px rgba(124, 196, 255, 0.8), 0 0 40px rgba(124, 196, 255, 0.4);
+      }
+    }
+
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      50% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+
+    .entry-page.fade-out {
+      animation: fadeOut 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .terminal-body {
+        padding: 16px;
+        padding-bottom: 65px;
+        font-size: 12px;
+      }
+      .compile-button {
+        padding: 10px 20px;
+        font-size: 12px;
+        bottom: 12px;
+        right: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="page">
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="logo">Portfolio</div>
-        <nav>
-          <a href="#hero">소개</a>
-          <a href="#skills">역량</a>
-          <a href="#projects">프로젝트</a>
-          <a href="#experience">경험</a>
-          <a href="#writing">글/발표</a>
-          <a href="#contact">연락처</a>
-        </nav>
+  <div class="entry-page" id="entryPage">
+    <div class="particles" id="particles"></div>
+    <div class="entry-content">
+      <div class="terminal" id="terminal">
+        <div class="terminal-header">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span style="margin-left: 12px; color: #8b949e; font-size: 12px;">PortFolio.go</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-line" id="line1">
+            <span class="terminal-prompt">$</span>
+            <span class="terminal-command" id="command"></span>
+            <span class="cursor" id="cursor"></span>
+          </div>
+          <button class="compile-button" id="compileButton" disabled>실행하기</button>
+        </div>
       </div>
     </div>
-
-    <main class="shell">
-    <section id="hero">
-      <header>
-        <div>
-          <div class="title">복권일</div>
-          <div class="subtitle">백엔드 개발자 · 관심 도메인/스택 한 줄</div>
-        </div>
-        <div class="row">
-          <span class="pill">📍 Seoul / Remote</span>
-          <span class="pill">📫 lottone27@naver.com</span>
-          <span class="pill"><a href="https://github.com/lotto-one" aria-label="GitHub link" target="_blank" rel="noreferrer noopener">GitHub</a></span>
-          <span class="pill"><a href="#" aria-label="LinkedIn link">LinkedIn</a></span>
-        </div>
-      </header>
-      <p class="subtitle">
-        한 문장 소개: 어떤 문제를 풀고 싶은 백엔드 개발자인지 적어주세요.
-      </p>
-    </section>
-
-    <section id="skills">
-      <header>
-        <div class="title">역량 스냅샷</div>
-        <span class="subtitle">언어 · 프레임워크 · 인프라 · 품질</span>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <h3>언어/런타임</h3>
-          <ul>
-            <li>예: Java/Kotlin, Go, TypeScript/Node.js</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>프레임워크</h3>
-          <ul>
-            <li>예: Spring Boot / NestJS / Fiber</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>데이터 & 메시징</h3>
-          <ul>
-            <li>예: PostgreSQL, Redis, Kafka/RabbitMQ</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>운영 & 품질</h3>
-          <ul>
-            <li>예: Docker, K8s, CI/CD, Observability</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <header>
-        <div class="title">프로젝트</div>
-        <span class="subtitle">3개 이내, 문제 → 설계 → 결과 중심</span>
-      </header>
-      <div class="grid">
-        <article class="card">
-          <div class="meta">2025 · 역할 / 스택</div>
-          <h3>프로젝트 이름</h3>
-          <ul>
-            <li>문제/제약: 동시 접속 1만, p95 200ms 이하</li>
-            <li>설계: 캐시/큐/락 전략, 주요 아키텍처 한 줄</li>
-            <li>결과: RPS, 지연, 비용 등 숫자</li>
-            <li>링크: <a href="#">Repo</a> · <a href="#">Diagram</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="meta">프로젝트 2</div>
-          <h3>이름</h3>
-          <ul>
-            <li>문제/제약</li>
-            <li>설계 포인트</li>
-            <li>결과 수치</li>
-            <li>링크</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="experience">
-      <header>
-        <div class="title">경험 & 기여</div>
-        <span class="subtitle">인턴 · 알바 · 오픈소스 · 스터디 리딩</span>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <div class="meta">회사/프로젝트 · 기간</div>
-          <h3>역할</h3>
-          <ul>
-            <li>담당 영역: 예) 인증/결제/배치</li>
-            <li>성과: 수치나 개선사항</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="meta">오픈소스/커뮤니티</div>
-          <h3>기여 포인트</h3>
-          <ul>
-            <li>PR/이슈, 발표, 스터디 리딩 등</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="writing">
-      <header>
-        <div class="title">기술 글 · 발표</div>
-        <span class="subtitle">설계/성능/장애 회고 중심</span>
-      </header>
-      <ul>
-        <li><a href="#">글/발표 제목</a> — 어떤 문제를 다루었는지 한 줄</li>
-        <li><a href="#">글/발표 제목</a> — 배운 점/결과</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <header>
-        <div class="title">Contact</div>
-        <span class="subtitle">이메일 · GitHub · LinkedIn</span>
-      </header>
-      <div class="row">
-        <span class="pill">📫 you@example.com</span>
-        <span class="pill"><a href="#">GitHub</a></span>
-        <span class="pill"><a href="#">LinkedIn</a></span>
-        <span class="pill"><a href="#">Blog</a></span>
-      </div>
-      <div class="footer">Keep it concise. 숫자와 역할을 강조하세요.</div>
-    </section>
-  </main>
   </div>
+
+  <script>
+    // 파티클 생성
+    function createParticles() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 30;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // 코드 타이핑 애니메이션
+    function typeText(element, text, speed = 50, callback) {
+      let i = 0;
+      element.textContent = '';
+      
+      function type() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        } else {
+          if (callback) callback();
+        }
+      }
+      type();
+    }
+
+    // 터미널에 새 라인 추가
+    function addTerminalLine(text, className = '', delay = 0) {
+      setTimeout(() => {
+        const terminalBody = document.getElementById('terminalBody');
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        if (className) {
+          line.innerHTML = `<span class="${className}">${text}</span>`;
+        } else {
+          line.textContent = text;
+        }
+        terminalBody.appendChild(line);
+      }, delay);
+    }
+
+    // 컴파일 프로세스
+    function startCompile() {
+      const compileButton = document.getElementById('compileButton');
+      const terminalBody = document.getElementById('terminalBody');
+      const cursor = document.getElementById('cursor');
+      
+      compileButton.disabled = true;
+      cursor.style.display = 'none';
+      
+      // 기존 라인들 제거
+      terminalBody.innerHTML = '';
+      
+      // 컴파일 시작
+      addTerminalLine('$ go 복권일 PortFolio.go', '', 0);
+      
+      setTimeout(() => {
+        addTerminalLine('', '', 100);
+        addTerminalLine('Building...', 'terminal-output', 200);
+        
+        setTimeout(() => {
+          addTerminalLine('✓ Compiling source files', 'terminal-output', 300);
+          
+          setTimeout(() => {
+            addTerminalLine('✓ Linking dependencies', 'terminal-output', 500);
+            
+            setTimeout(() => {
+              addTerminalLine('✓ Optimizing binary', 'terminal-output', 700);
+              
+              setTimeout(() => {
+                addTerminalLine('', '', 200);
+                addTerminalLine('Build successful!', 'terminal-output success', 300);
+                addTerminalLine('Portfolio ready to launch.', 'terminal-output success', 500);
+                
+                setTimeout(() => {
+                  navigateToPortfolio();
+                }, 1000);
+              }, 500);
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 500);
+    }
+
+    // 포트폴리오 페이지로 이동
+    function navigateToPortfolio() {
+      const entryPage = document.getElementById('entryPage');
+      entryPage.classList.add('fade-out');
+      
+      setTimeout(() => {
+        window.location.href = './portfolio.html';
+      }, 800);
+    }
+
+    // 초기화
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      
+      const commandElement = document.getElementById('command');
+      const compileButton = document.getElementById('compileButton');
+      
+      // 코드 타이핑 시작
+      setTimeout(() => {
+        typeText(commandElement, 'go 복권일 PortFolio.go', 80, () => {
+          // 타이핑 완료 후 버튼 활성화
+          setTimeout(() => {
+            compileButton.disabled = false;
+          }, 300);
+        });
+      }, 500);
+      
+      // 컴파일 버튼 클릭 이벤트
+      compileButton.addEventListener('click', startCompile);
+    });
+  </script>
 </body>
 </html>

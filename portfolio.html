@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lottone Portfolio</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="logo">Portfolio</div>
+        <nav>
+          <a href="#hero">소개</a>
+          <a href="#skills">역량</a>
+          <a href="#projects">프로젝트</a>
+          <a href="#experience">경험</a>
+          <a href="#writing">글/발표</a>
+          <a href="#contact">연락처</a>
+        </nav>
+      </div>
+    </div>
+
+    <main class="shell">
+    <section id="hero">
+      <header>
+        <div>
+          <div class="title">복권일</div>
+          <div class="subtitle">백엔드 개발자 · 관심 도메인/스택 한 줄</div>
+        </div>
+        <div class="row">
+          <span class="pill">📍 Seoul / Remote</span>
+          <span class="pill">📫 lottone27@naver.com</span>
+          <span class="pill"><a href="https://github.com/lotto-one" aria-label="GitHub link" target="_blank" rel="noreferrer noopener">GitHub</a></span>
+          <span class="pill"><a href="#" aria-label="LinkedIn link">LinkedIn</a></span>
+        </div>
+      </header>
+      <p class="subtitle">
+        한 문장 소개: 어떤 문제를 풀고 싶은 백엔드 개발자인지 적어주세요.
+      </p>
+    </section>
+
+    <section id="skills">
+      <header>
+        <div class="title">역량 스냅샷</div>
+        <span class="subtitle">언어 · 프레임워크 · 인프라 · 품질</span>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <h3>언어/런타임</h3>
+          <ul>
+            <li>예: Java/Kotlin, Go, TypeScript/Node.js</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>프레임워크</h3>
+          <ul>
+            <li>예: Spring Boot / NestJS / Fiber</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>데이터 & 메시징</h3>
+          <ul>
+            <li>예: PostgreSQL, Redis, Kafka/RabbitMQ</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>운영 & 품질</h3>
+          <ul>
+            <li>예: Docker, K8s, CI/CD, Observability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <header>
+        <div class="title">프로젝트</div>
+        <span class="subtitle">3개 이내, 문제 → 설계 → 결과 중심</span>
+      </header>
+      <div class="grid">
+        <article class="card">
+          <div class="meta">2025 · 역할 / 스택</div>
+          <h3>프로젝트 이름</h3>
+          <ul>
+            <li>문제/제약: 동시 접속 1만, p95 200ms 이하</li>
+            <li>설계: 캐시/큐/락 전략, 주요 아키텍처 한 줄</li>
+            <li>결과: RPS, 지연, 비용 등 숫자</li>
+            <li>링크: <a href="#">Repo</a> · <a href="#">Diagram</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="meta">프로젝트 2</div>
+          <h3>이름</h3>
+          <ul>
+            <li>문제/제약</li>
+            <li>설계 포인트</li>
+            <li>결과 수치</li>
+            <li>링크</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <header>
+        <div class="title">경험 & 기여</div>
+        <span class="subtitle">인턴 · 알바 · 오픈소스 · 스터디 리딩</span>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <div class="meta">회사/프로젝트 · 기간</div>
+          <h3>역할</h3>
+          <ul>
+            <li>담당 영역: 예) 인증/결제/배치</li>
+            <li>성과: 수치나 개선사항</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="meta">오픈소스/커뮤니티</div>
+          <h3>기여 포인트</h3>
+          <ul>
+            <li>PR/이슈, 발표, 스터디 리딩 등</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <header>
+        <div class="title">기술 글 · 발표</div>
+        <span class="subtitle">설계/성능/장애 회고 중심</span>
+      </header>
+      <ul>
+        <li><a href="#">글/발표 제목</a> — 어떤 문제를 다루었는지 한 줄</li>
+        <li><a href="#">글/발표 제목</a> — 배운 점/결과</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <header>
+        <div class="title">Contact</div>
+        <span class="subtitle">이메일 · GitHub · LinkedIn</span>
+      </header>
+      <div class="row">
+        <span class="pill">📫 you@example.com</span>
+        <span class="pill"><a href="#">GitHub</a></span>
+        <span class="pill"><a href="#">LinkedIn</a></span>
+        <span class="pill"><a href="#">Blog</a></span>
+      </div>
+      <div class="footer">Keep it concise. 숫자와 역할을 강조하세요.</div>
+    </section>
+  </main>
+  </div>
+</body>
+</html>
+
