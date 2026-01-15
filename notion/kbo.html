@@ -1,0 +1,754 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title> 🏟️ KBO 리그 통합 데이터 플랫폼</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2e9ef993-2ef3-810f-902a-f6c1ca0b4d4a" class="page sans"><header><img class="page-cover-image" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/9.png" style="object-position:center 0.6099999999999994%"/><h1 class="page-title" dir="auto"> 🏟️ KBO 리그 통합 데이터 플랫폼</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-819d-8494-e73eb4eeb11b" class="">📌 프로젝트 목표 및 개요</h3></div><div style="display:contents" dir="auto"><blockquote id="2e9ef993-2ef3-8136-a9fe-c59955d28dc2" class="">흩어진 KBO 리그 정보를 통합하여 팬들에게<div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8171-8b89-db2efc8d417f" class=""><strong>경기 데이터, 뉴스, 구단 정보, 커뮤니티 기능</strong>까지</p></div><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8105-8630-fb68e1ccd299" class="">직관적으로 즐길 수 있는 <strong>통합형 야구 정보 플랫폼</strong>을 개발했습니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-8169-9504-e8d5c4110148"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-8189-a710-fc342bb876ce" class="">🎯 주요 기능</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-818c-8776-ebe2043ecdee" class="bulleted-list"><li style="list-style-type:disc"><strong>실시간 KBO 경기 및 선수 데이터 통합 제공</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-815f-9425-db5f9491b2a6" class="bulleted-list"><li style="list-style-type:disc">야구장 <strong>위치 기반 날씨 정보 연동</strong> 및 <strong>시각화</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-810b-83bd-e117d79438c1" class="bulleted-list"><li style="list-style-type:disc"><strong>최신 KBO 뉴스 자동 수집</strong> 및 뉴스 피드 제공</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-813a-925c-d4a14d65236d" class="bulleted-list"><li style="list-style-type:disc">구단별 <strong>모기업 증권 정보 시각화</strong> (차트·지표 제공)</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81e7-8848-eaebc1fabe9d" class="bulleted-list"><li style="list-style-type:disc"><strong>응원 게시판 커뮤니티 기능</strong> 및 댓글/필터링/신고 시스템</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81b6-a448-ca8a465ba979" class="bulleted-list"><li style="list-style-type:disc"><strong>데이터 출처, 오류 모니터링, 사용자 피드백 기반 신뢰성 확보</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-81bd-aa12-f6468601c68c"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81c0-9e40-df6a41b118d0" class="">🧩 기술 스택</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8134-950c-f03cd6f7ff96" class="bulleted-list"><li style="list-style-type:disc"><strong>Frontend</strong>: HTML5 · CSS3 · JavaScript</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81df-8368-fd75c0e9ab4e" class="bulleted-list"><li style="list-style-type:disc"><strong>Backend</strong>: Django · Spring MVC · RESTful API</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81f5-aa07-e291022b1935" class="bulleted-list"><li style="list-style-type:disc"><strong>Data Crawling</strong>: BeautifulSoup4 · Selenium</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81d5-80cf-d39c832c5f5c" class="bulleted-list"><li style="list-style-type:disc"><strong>Database</strong>: MySQL · Oracle</li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81ec-8974-e95d9e59cdea" class="bulleted-list"><li style="list-style-type:disc"><strong>Infra / DevOps</strong>: Git · GitHub</li></ul></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81ac-a57b-d9e49e28e395" class="">⚙️ 기술 선택 요약</h3></div><div style="display:contents" dir="auto"><blockquote id="2e9ef993-2ef3-8100-acfb-e489b41189d2" class="">Python 기반 크롤러는 다양한 외부 소스로부터 데이터를 안정적으로 수집하고,<div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-817e-82d2-d84767111932" class="">RESTful API 기반 백엔드 통합으로 <strong>Django와 Spring MVC의 기능을 유기적으로 연결</strong>했습니다.</p></div><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8197-a2fa-d55657c1f991" class=""><strong>Highcharts</strong>와 커스텀 JS로 대용량 데이터 시각화 성능을 최적화했습니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-814d-b881-f89daaa5cdf9"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81b6-81f4-f927ece2d853" class="">👨‍💻 주요 역할 및 기여</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-811e-8220-d65a314a6aa3" class="bulleted-list"><li style="list-style-type:disc"><strong>데이터 크롤러 개발 및 구조 변경 대응 로직 구현 (BeautifulSoup4, Selenium)</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-815f-b55f-dcab257e03f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Django / Spring MVC 이기종 백엔드 REST 통신 및 역할 분리 설계</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8107-add7-c7d9e9ffe711" class="bulleted-list"><li style="list-style-type:disc"><strong>크롤링 스케줄러 및 오류 감지 로직 구현으로 데이터 품질 확보</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-818d-b0a8-e789799270f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Highcharts 기반 대시보드 시각화 구성 및 인터랙션 최적화</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81fc-9899-effa7ae7d041" class="bulleted-list"><li style="list-style-type:disc"><strong>사용자 중심 응원 커뮤니티 기능 기획 및 UI/UX 설계</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-8195-865a-dddfc3007576"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81ea-97ec-cc3b77944cd3" class="">🏆 주요 성과</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8180-a9da-f49e53147439" class="bulleted-list"><li style="list-style-type:disc"><strong>웹사이트 구조 변경 대응을 위한 크롤링 안정성 확보</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81ab-92cc-e999d9e170e7" class="bulleted-list"><li style="list-style-type:disc"><strong>Django &amp; Spring MVC 기반 이기종 백엔드 통합 환경 구축</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8171-8aa5-f7ff97150756" class="bulleted-list"><li style="list-style-type:disc"><strong>대용량 KBO 데이터 시각화 성능 및 응답 속도 개선</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-8140-b978-f02bc4b3701d"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81ec-b7df-f60537e11478" class="">💡 기술적 도전 및 해결</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81fd-bd11-f11f0a141ccb" class="bulleted-list"><li style="list-style-type:disc"><strong>크롤링 대상 사이트 구조 변경 대응</strong><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8158-81a6-f8b52dd42ea3" class="">→ XPath 우선순위 로직, CSS Selector 대체로 <strong>자동 크롤링 방식 전환</strong> 구현</p></div><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-81b1-a29b-e33eae3f4576"><div class="source"><a href="https://www.canva.com/design/DAGFOCsU4WE/FJriCrc0F6WOqQNAD4lTLg/view?utm_content=DAGFOCsU4WE&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h6f4e4215be">https://www.canva.com/design/DAGFOCsU4WE/FJriCrc0F6WOqQNAD4lTLg/view?utm_content=DAGFOCsU4WE&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h6f4e4215be</a></div></figure></div><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-8187-83fa-fcc941181581" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/%25EC%259B%25B9%25ED%2581%25AC%25EB%25A1%25A4%25EB%25A7%2581%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8.gif"><img style="width:703px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/%25EC%259B%25B9%25ED%2581%25AC%25EB%25A1%25A4%25EB%25A7%2581%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8.gif"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81d0-b219-cecfface0309" class="bulleted-list"><li style="list-style-type:disc"><strong>이기종 백엔드 통합 설계</strong><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8199-9711-c3f37f582c42" class="">→ RESTful API 표준화 + 공통 인증 시스템 구축</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81e3-bc31-f12d16586d1d" class="bulleted-list"><li style="list-style-type:disc"><strong>실시간 데이터 시각화 성능 저하 해결</strong><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-8167-80c0-c97449e5fb53" class="">→ Highcharts 시리즈 최적화, 서버 측 데이터 전처리, <strong>지연 로딩 적용</strong></p></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-8162-a33a-e51eb8b92ca7"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-811e-9dd6-e668d7a62184" class="">🏗 시스템 아키텍처</h3></div><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-81d2-b2cd-c9bd935ba7e6" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/project1.png"><img style="width:709.984375px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/project1.png"/></a></figure></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2e9ef993-2ef3-8196-a6d3-dce5f18f75bd" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph TB
+    subgraph &quot;데이터 소스&quot;
+        A[네이버 날씨 API]
+        B[네이버 스포츠 뉴스]
+        C[KBO 공식 사이트]
+        D[네이버 증권]
+    end
+    subgraph &quot;크롤링 시스템&quot;
+        E[날씨 크롤러]
+        F[뉴스 크롤러]
+        G[경기/선수 크롤러]
+        H[증권 크롤러]
+        I[스케줄러]
+        J[오류 감지]
+    end
+    subgraph &quot;데이터 처리&quot;
+        K[데이터 정제]
+        L[데이터 검증]
+        M[ETL 프로세스]
+    end
+    subgraph &quot;데이터 저장소&quot;
+        N[(Oracle DB)]
+    end
+    subgraph &quot;웹 애플리케이션&quot;
+        O[Django 백엔드]
+        O2[Spring MVC 백엔드]
+        P[프론트엔드]
+        R[응원게시판]
+        S[구단 정보]
+        T[경기 정보]
+        V[뉴스 피드]
+    end
+
+    A --&gt; E; B --&gt; F; C --&gt; G; D --&gt; H
+    E &amp; F &amp; G &amp; H --&gt; K
+    I ---&gt; E &amp; F &amp; G &amp; H
+    J -.-&gt; E &amp; F &amp; G &amp; H
+    K --&gt; L --&gt; M --&gt; N
+    N --&gt; O &amp; O2
+    O &amp; O2 --&gt; P
+    P --&gt; R &amp; S &amp; T &amp; V</code></pre></div><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-816d-bb2f-e06f02783f43" class="column-list"><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-8124-a3df-c7ad975a90f9" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-81df-9eb2-d6314643f796" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image.png"><img style="width:709.984375px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-8166-a18a-f539a3f7fc03" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-8121-98e8-c727ec290c88" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image%201.png"><img style="width:709.984375px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image%201.png"/></a></figure></div></div></div></div></div><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-81c5-9066-e7d64244e454" class="column-list"><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-8105-ba7c-e8373ac959b0" style="width:50%" class="column"><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-8187-a71e-e49a22988584" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image%202.png"><img style="width:709.984375px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/image%202.png"/></a></figure></div></div></div><div style="display:contents" dir="auto"><div id="2e9ef993-2ef3-8140-b367-e56747a6355f" style="width:50%" class="column"><div style="display:contents" dir="auto"><p id="2e9ef993-2ef3-81fc-86c7-fe62c0de1900" class="">
+</p></div></div></div></div></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-81e1-a8f0-d91c8f0dfa97"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-81ba-87e4-cc5a68569f22" class="">🌱 성장 및 배움</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81c2-8fe6-f3a2fd22b2bd" class="bulleted-list"><li style="list-style-type:disc"><strong>크롤링 자동화 및 구조 변경 대응 로직 개발 경험</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81c8-ab17-d5c32a586395" class="bulleted-list"><li style="list-style-type:disc"><strong>이기종 시스템 통합 설계 및 REST API 기반 통신 구현 역량 강화</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8188-b3b9-d3e9877c922b" class="bulleted-list"><li style="list-style-type:disc"><strong>데이터 기반 서비스 기획 및 사용자 시각화 경험 축적</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81bc-b3ae-d9243d62900c" class="bulleted-list"><li style="list-style-type:disc"><strong>데이터 수집 → 정제 → 시각화까지 전체 파이프라인 실전 경험 확보</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-81e4-a755-f5dfc8db94f3"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-811a-b48d-e109a7ca215f" class="">🚀 향후 개선 방향</h3></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8182-8f01-e78f9f5fc043" class="bulleted-list"><li style="list-style-type:disc"><strong>머신러닝 기반 경기 예측 기능 도입</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-81fa-a10a-f038706fbf14" class="bulleted-list"><li style="list-style-type:disc"><strong>타자·투수 심화 지표 시각화 기능 확장</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-8147-8a4a-d835c2d762b1" class="bulleted-list"><li style="list-style-type:disc"><strong>공개 API 제공을 통한 외부 활용성 확대</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2e9ef993-2ef3-810a-8cfb-e6aec2a46c11" class="bulleted-list"><li style="list-style-type:disc"><strong>SNS 연동 커뮤니티 및 댓글 강화 기능 도입</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-817a-9ca8-d2a0b7c82f68"/></div><div style="display:contents" dir="auto"><h3 id="2e9ef993-2ef3-8187-8e44-ea30ca2849ec" class="">🎥 프로젝트 시연 영상</h3></div><div style="display:contents" dir="ltr"><figure id="2e9ef993-2ef3-817e-ae73-f7a397cdba5a" class="image"><a href="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/%25EC%259B%25B9%25ED%2581%25AC%25EB%25A1%25A4%25EB%25A7%2581%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8_(1).gif"><img style="width:703px" src="%F0%9F%8F%9F%EF%B8%8F%20KBO%20%EB%A6%AC%EA%B7%B8%20%ED%86%B5%ED%95%A9%20%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%94%8C%EB%9E%AB%ED%8F%BC/%25EC%259B%25B9%25ED%2581%25AC%25EB%25A1%25A4%25EB%25A7%2581%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8_(1).gif"/></a></figure></div><div style="display:contents" dir="auto"><hr id="2e9ef993-2ef3-817a-b0c8-f11519ef3940"/></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
