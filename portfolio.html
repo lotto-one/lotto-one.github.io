@@ -22,28 +22,28 @@
       <aside class="sidebar">
         <nav>
           <a href="#hero" class="active">
-            <span class="nav-number">01.</span>
-            <span class="nav-text">About</span>
-          </a>
-          <a href="#skills">
-            <span class="nav-number">02.</span>
-            <span class="nav-text">Skills</span>
+            <span class="nav-icon">></span>
+            <span class="nav-text">about</span>
           </a>
           <a href="#projects">
-            <span class="nav-number">03.</span>
-            <span class="nav-text">Projects</span>
+            <span class="nav-icon">></span>
+            <span class="nav-text">projects</span>
+          </a>
+          <a href="#skills">
+            <span class="nav-icon">></span>
+            <span class="nav-text">skills</span>
           </a>
           <a href="#experience">
-            <span class="nav-number">04.</span>
-            <span class="nav-text">Experience</span>
+            <span class="nav-icon">></span>
+            <span class="nav-text">career</span>
           </a>
-          <a href="#writing">
-            <span class="nav-number">05.</span>
-            <span class="nav-text">Writing</span>
+          <a href="#education">
+            <span class="nav-icon">></span>
+            <span class="nav-text">education</span>
           </a>
           <a href="#contact">
-            <span class="nav-number">06.</span>
-            <span class="nav-text">Contact</span>
+            <span class="nav-icon">></span>
+            <span class="nav-text">contact</span>
           </a>
         </nav>
       </aside>
@@ -58,175 +58,210 @@
           <p class="hero-description">
             사용자 흐름을 이해하고, 이를 설계에 반영하는 풀스택 개발자입니다.
           </p>
-          <div class="hero-info">
-            <div class="hero-info-item">
+          <div class="hero-links">
+            <a href="mailto:lottone27@naver.com" class="hero-link">
+              <span class="link-icon">📧</span>
               <span>lottone27@naver.com</span>
-              <a href="https://github.com/lotto-one" target="_blank" rel="noreferrer noopener">GitHub</a>
-              <a href="https://lottone.tistory.com" target="_blank" rel="noreferrer noopener">Blog</a>
-            </div>
+            </a>
+            <a href="https://github.com/lotto-one" target="_blank" rel="noreferrer noopener" class="hero-link">
+              <span class="link-icon">💻</span>
+              <span>GitHub</span>
+            </a>
+            <a href="https://lottone.tistory.com" target="_blank" rel="noreferrer noopener" class="hero-link">
+              <span class="link-icon">📝</span>
+              <span>Blog</span>
+            </a>
           </div>
         </div>
         <div class="hero-image">
           <div class="hero-image-placeholder">
-            <img src="./image/bok.jpeg" alt="복권일 프로필 사진"> 
-            <span>포폴사진/span>
+            <img src="./image/bok.jpeg" alt="복권일 프로필 사진">
+            <span>포폴사진</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <header>
-        <div class="title">Projects</div>
-        <span class="subtitle">3개 이내, 문제 → 설계 → 결과 중심</span>
-      </header>
-      <div class="grid">
-        <article class="card">
-          <div class="meta">2025 · 역할 / 스택</div>
-          <h3>프로젝트 이름</h3>
-          <ul>
-            <li>문제/제약: 동시 접속 1만, p95 200ms 이하</li>
-            <li>설계: 캐시/큐/락 전략, 주요 아키텍처 한 줄</li>
-            <li>결과: RPS, 지연, 비용 등 숫자</li>
-            <li>링크: <a href="#">Repo</a> · <a href="#">Diagram</a></li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="meta">프로젝트 2</div>
-          <h3>이름</h3>
-          <ul>
-            <li>문제/제약</li>
-            <li>설계 포인트</li>
-            <li>결과 수치</li>
-            <li>링크</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+    <section id="projects" class="content-section">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-content">
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3 class="project-title">프로젝트 이름</h3>
+            <p class="project-meta">2025 · 역할 / 스택</p>
+            <p class="project-desc">동시 접속 1만, p95 200ms 이하 - 캐시/큐/락 전략, 주요 아키텍처 한 줄</p>
+            <div class="project-tags">
+              <span class="tag">Java</span>
+              <span class="tag">Spring</span>
+              <span class="tag">Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+              <a href="#" class="project-link">Demo →</a>
+            </div>
+          </article>
 
-    <section id="skills">
-      <header>
-        <div class="title">기술 스택</div>
-        <span class="subtitle">Backend · Frontend · Database · DevOps</span>
-      </header>
-      <div class="grid">
-    
-        <div class="card">
-          <h3>Backend</h3>
-          <ul>
-            <li>Java</li>
-            <li>Spring Boot</li>
-            <li>REST API</li>
-            <li>JPA</li> 
-            <li>MyBatis</li>
-          </ul>
-        </div>
-    
-        <div class="card">
-          <h3>Frontend</h3>
-          <ul>
-            <li>JavaScript</li>
-            <li>Vue.js</li>
-            <li>Thymeleaf</li>
-            <li>HTML</li>
-            <li>CSS</li>
-          </ul>
-        </div>
-    
-        <div class="card">
-          <h3>Database</h3>
-          <ul>
-            <li>MySQL</li>
-            <li>Oracle</li>
-          </ul>
-        </div>
-    
-        <div class="card">
-          <h3>DevOps</h3>
-          <ul>
-            <li>AWS (EC2,S3)</li>
-            <li>GitHub Actions (CI/CD)</li>
-            <li>Linux (Ubuntu)</li>
-          </ul>
-        </div>
-    
-        <div class="card">
-          <h3>Tools</h3>
-          <ul>
-            <li>Git / GitHub</li>
-            <li>Postman / Swagger</li>
-          </ul>
-        </div>
-    
-      </div>
-    </section>
-    
-    
-
-
-
-    <section id="experience">
-      <header>
-        <div class="title">Career</div>
-        <span class="subtitle">인턴 · 알바 · 오픈소스 · 스터디 리딩</span>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <div class="meta">비지언스  &nbsp;&nbsp;|&nbsp;&nbsp;  2025.01 ~ 재직중</div>
-          <h3>백엔드 개발자</h3>
-          <ul>
-            <li>담당 영역: 웹 개발</li>
-            <li>성과: 수치나 개선사항</li>
-          </ul>
-        </div>
-      </div>
-      <div class="grid">
-        <div class="card">
-          <div class="meta">풀스택 개발 교육 플랫폼  &nbsp;&nbsp;|&nbsp;&nbsp;  2024.02 ~ 2024.08</div>
-          <h3>Full Stack Developer</h3>
-          <ul>
-            <li>담당 영역: 웹 개발, 모바일 개발, 데이터 분석</li>
-            <li>성과: 수치나 개선사항</li>
-          </ul>
+          <article class="project-card">
+            <h3 class="project-title">프로젝트 2</h3>
+            <p class="project-meta">2024 · 역할 / 스택</p>
+            <p class="project-desc">문제/제약 설명 - 설계 포인트 - 결과 수치</p>
+            <div class="project-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">Node.js</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="project-link">GitHub →</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="Education">
-      <header>
-        <div class="title">Education & Spec</div>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <div class="meta">2019.02 ~ 2024.02</div>
-          <h3>고려대학교 세종캠퍼스</h3>
-          <ul>
-            <li><a href="#">전공</a>&nbsp;&nbsp;&nbsp;전자및정보공학과</li>
-            <li><a href="#">졸업 프로젝트</a>&nbsp;&nbsp;&nbsp;Arduino 기반 온도 센서 데이터를 활용한 설비 제어 시스템 개발</li>
-          </ul>          
+    <section id="skills" class="content-section">
+      <h2 class="section-title">Skills</h2>
+      <div class="section-content">
+        <div class="skills-container">
+          <div class="skill-group">
+            <h4 class="skill-category">Backend</h4>
+            <div class="skill-list">
+              <span class="skill-item">Java</span>
+              <span class="skill-item">Spring Boot</span>
+              <span class="skill-item">REST API</span>
+              <span class="skill-item">JPA</span>
+              <span class="skill-item">MyBatis</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4 class="skill-category">Frontend</h4>
+            <div class="skill-list">
+              <span class="skill-item">JavaScript</span>
+              <span class="skill-item">Vue.js</span>
+              <span class="skill-item">Thymeleaf</span>
+              <span class="skill-item">HTML / CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4 class="skill-category">Database</h4>
+            <div class="skill-list">
+              <span class="skill-item">MySQL</span>
+              <span class="skill-item">Oracle</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4 class="skill-category">DevOps</h4>
+            <div class="skill-list">
+              <span class="skill-item">AWS (EC2, S3)</span>
+              <span class="skill-item">GitHub Actions</span>
+              <span class="skill-item">Linux (Ubuntu)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4 class="skill-category">Tools</h4>
+            <div class="skill-list">
+              <span class="skill-item">Git / GitHub</span>
+              <span class="skill-item">Postman / Swagger</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="grid">
-        <div class="card">
-      <ul>
-        <li><a href="#">2025.12</a>&nbsp;&nbsp;&nbsp;&nbsp; 리눅스마스터 2급</li>
-      </ul>
+    </section>
+    
+    
+
+
+
+    <section id="experience" class="content-section">
+      <h2 class="section-title">Experience</h2>
+      <div class="section-content">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="company-name">비지언스</h3>
+              <span class="period">2025.01 ~ 재직중</span>
+            </div>
+            <p class="position">백엔드 개발자</p>
+            <p class="description">웹 개발 담당 · 수치나 개선사항</p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-header">
+              <h3 class="company-name">풀스택 개발 교육 플랫폼</h3>
+              <span class="period">2024.02 ~ 2024.08</span>
+            </div>
+            <p class="position">Full Stack Developer</p>
+            <p class="description">웹 개발, 모바일 개발, 데이터 분석 · 수치나 개선사항</p>
+          </div>
+        </div>
       </div>
-    </div>
     </section>
 
-    <section id="contact">
-      <header>
-        <div class="title">Contact</div>
-        <span class="subtitle">이메일 · GitHub · LinkedIn</span>
-      </header>
-      <div class="row">
-        <span class="pill">📫 you@example.com</span>
-        <span class="pill"><a href="#">GitHub</a></span>
-        <span class="pill"><a href="#">LinkedIn</a></span>
-        <span class="pill"><a href="#">Blog</a></span>
+    <section id="education" class="content-section">
+      <h2 class="section-title">Education</h2>
+      <div class="section-content">
+        <div class="edu-container">
+          <div class="edu-item">
+            <div class="edu-main">
+              <h3 class="school-name">고려대학교 세종캠퍼스</h3>
+              <span class="edu-period">2019.02 ~ 2024.02</span>
+            </div>
+            <p class="major">전자및정보공학과</p>
+            <p class="project-info">Arduino 기반 온도 센서 데이터를 활용한 설비 제어 시스템 개발</p>
+          </div>
+
+          <div class="cert-section">
+            <h4 class="cert-title">자격증</h4>
+            <div class="cert-item">
+              <span>리눅스마스터 2급</span>
+              <span class="cert-date">2025.12</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="footer">Keep it concise. 숫자와 역할을 강조하세요.</div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <h2 class="section-title">Contact</h2>
+      <div class="section-content">
+        <div class="contact-grid">
+        <a href="mailto:lottone27@naver.com" class="contact-card">
+          <div class="contact-icon-wrapper">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="#6B9EFF" stroke-width="2" fill="none"/>
+              <path d="M3 7L12 13L21 7" stroke="#6B9EFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="contact-title">Email</h3>
+          <p class="contact-info">lottone27@naver.com</p>
+        </a>
+
+        <a href="https://github.com/lotto-one" target="_blank" rel="noreferrer noopener" class="contact-card">
+          <div class="contact-icon-wrapper">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12C2 16.42 4.865 20.17 8.839 21.49C9.339 21.58 9.521 21.27 9.521 21C9.521 20.77 9.511 19.98 9.511 19.15C7 19.61 6.35 18.53 6.15 17.97C6.037 17.68 5.55 16.8 5.125 16.57C4.775 16.4 4.275 15.94 5.115 15.93C5.9 15.92 6.462 16.64 6.65 16.95C7.55 18.43 8.988 18.01 9.562 17.73C9.65 17.08 9.912 16.65 10.2 16.38C7.975 16.11 5.65 15.24 5.65 11.47C5.65 10.46 6.037 9.62 6.675 8.97C6.575 8.7 6.225 7.66 6.775 6.32C6.775 6.32 7.612 6.05 9.525 7.37C10.325 7.13 11.175 7.01 12.025 7.01C12.875 7.01 13.725 7.13 14.525 7.37C16.437 6.04 17.275 6.32 17.275 6.32C17.825 7.66 17.475 8.7 17.375 8.97C18.012 9.62 18.4 10.45 18.4 11.47C18.4 15.25 16.063 16.11 13.838 16.38C14.2 16.7 14.513 17.31 14.513 18.26C14.513 19.6 14.5 20.68 14.5 21C14.5 21.27 14.688 21.59 15.188 21.49C19.138 20.16 22 16.41 22 12C22 6.477 17.523 2 12 2Z" fill="#6B9EFF"/>
+            </svg>
+          </div>
+          <h3 class="contact-title">GitHub</h3>
+          <p class="contact-info">github.com/lotto-one</p>
+        </a>
+
+        <a href="https://lottone.tistory.com" target="_blank" rel="noreferrer noopener" class="contact-card">
+          <div class="contact-icon-wrapper">
+            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="6" cy="6" r="3.5" fill="#FF7600"/>
+              <circle cx="18" cy="6" r="3.5" fill="#FF7600"/>
+              <circle cx="6" cy="18" r="3.5" fill="#FF7600"/>
+              <circle cx="18" cy="18" r="3.5" fill="#FF7600"/>
+            </svg>
+          </div>
+          <h3 class="contact-title">Blog</h3>
+          <p class="contact-info">lottone.tistory.com</p>
+        </a>
+        </div>
+      </div>
     </section>
 
 
@@ -240,10 +275,13 @@
     document.addEventListener('DOMContentLoaded', () => {
       const navLinks = document.querySelectorAll('.sidebar nav a');
       const sections = document.querySelectorAll('section');
+      const scrollContainer = document.querySelector('.main-content');
 
-      // 스크롤 시 활성 섹션 감지 (개선된 로직)
+      if (!scrollContainer) return;
+
+      // 스크롤 시 활성 섹션 감지
       function updateActiveNav() {
-        const scrollPosition = window.scrollY + window.innerHeight / 3; // 화면 상단 1/3 지점 기준
+        const scrollPosition = scrollContainer.scrollTop + scrollContainer.clientHeight / 3;
         let current = '';
 
         sections.forEach((section) => {
@@ -251,23 +289,22 @@
           const sectionHeight = section.clientHeight;
           const sectionId = section.getAttribute('id');
 
-          // 현재 스크롤 위치가 섹션의 상단과 하단 사이에 있는지 확인
           if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
             current = sectionId;
           }
         });
 
-        // 첫 번째 섹션이 화면 상단에 있을 때
-        if (sections.length > 0 && window.scrollY < sections[0].offsetTop + 150) {
+        // 첫 번째 섹션
+        if (sections.length > 0 && scrollContainer.scrollTop < sections[0].offsetTop + 150) {
           current = sections[0].getAttribute('id');
         }
 
-        // 마지막 섹션에 도달했을 때
+        // 마지막 섹션
         if (sections.length > 0) {
           const lastSection = sections[sections.length - 1];
           const lastSectionTop = lastSection.offsetTop;
           const lastSectionHeight = lastSection.clientHeight;
-          if (window.scrollY + window.innerHeight >= lastSectionTop + lastSectionHeight - 150) {
+          if (scrollContainer.scrollTop + scrollContainer.clientHeight >= lastSectionTop + lastSectionHeight - 150) {
             current = lastSection.getAttribute('id');
           }
         }
@@ -282,7 +319,7 @@
         });
       }
 
-      // 클릭 시 부드러운 스크롤 및 활성 상태 업데이트
+      // 클릭 시 부드러운 스크롤
       navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
@@ -294,9 +331,9 @@
             navLinks.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
 
-            // 부드러운 스크롤
+            // 부드러운 스크롤 (.main-content 컨테이너 기준)
             const offsetTop = targetSection.offsetTop - 40;
-            window.scrollTo({
+            scrollContainer.scrollTo({
               top: offsetTop,
               behavior: 'smooth'
             });
@@ -316,7 +353,7 @@
         }
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
+      scrollContainer.addEventListener('scroll', onScroll, { passive: true });
       updateActiveNav(); // 초기 실행
     });
   </script>

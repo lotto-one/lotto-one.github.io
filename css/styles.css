@@ -1,10 +1,10 @@
 /* 기본 리셋 및 타이포 */
 :root {
-  /* 가독성 높은 소프트 다크 팔레트 */
+  /* 터미널 스타일 다크 팔레트 */
   --bg: #111725;
   --panel: #182132;
   --card: #1d283b;
-  --accent: #7cc4ff;
+  --accent: #6B9EFF;
   --text: #f3f6fb;
   --muted: #a7b5c8;
   --border: #253043;
