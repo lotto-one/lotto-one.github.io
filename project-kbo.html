@@ -21,157 +21,171 @@
     <div class="terminal-content">
       <aside class="sidebar">
         <nav>
-          <a href="portfolio.html#projects" class="active">
+          <a href="portfolio.html#projects" class="active sidebar-back">
             <span class="nav-icon"><</span>
             <span class="nav-text">back</span>
+          </a>
+          <hr class="sidebar-divider">
+          <div class="sidebar-section-title">sections</div>
+          <a href="#project-detail">
+            <span class="nav-icon">></span>
+            <span class="nav-text">프로젝트 소개</span>
+          </a>
+          <a href="#overview">
+            <span class="nav-icon">></span>
+            <span class="nav-text">개요</span>
+          </a>
+          <a href="#contributions">
+            <span class="nav-icon">></span>
+            <span class="nav-text">주요 역할 및 기여</span>
+          </a>
+          <a href="#tech-stack">
+            <span class="nav-icon">></span>
+            <span class="nav-text">기술 스택</span>
+          </a>
+          <a href="#screens">
+            <span class="nav-icon">></span>
+            <span class="nav-text">주요 화면</span>
+          </a>
+          <a href="#retrospective">
+            <span class="nav-icon">></span>
+            <span class="nav-text">프로젝트 후기</span>
+          </a>
+          <a href="#demo">
+            <span class="nav-icon">></span>
+            <span class="nav-text">프로젝트 시연 영상</span>
           </a>
         </nav>
       </aside>
 
       <div class="main-content">
         <main class="shell">
-          <section id="project-detail" class="content-section project-detail-hero">
-            <div class="section-content detail-hero">
-              <div class="detail-hero-text">
-                <p class="detail-eyebrow">Project</p>
-                <h1 class="detail-title">KBO 리그 통합 데이터 플랫폼</h1>
-                <p class="detail-summary">
-                  흩어진 KBO 리그 정보를 통합해 경기 데이터, 뉴스, 구단 정보, 커뮤니티까지 한 번에 제공하는
-                  통합형 야구 정보 플랫폼을 구축했습니다.
-                </p>
-                <div class="detail-meta">
-                  <div class="detail-meta-item">
-                    <span class="detail-meta-label">역할</span>
-                    <span class="detail-meta-value">Fullstack</span>
+          <section id="project-detail" class="hero-section project-hero">
+            <div class="hero-content">
+              <div class="hero-image">
+                <div class="hero-image-placeholder">
+                  <img src="./image/kbo/cover.png" alt="KBO 리그 통합 데이터 플랫폼 메인 화면">
+                  <span>KBO 메인 화면</span>
+                </div>
+              </div>
+              <div class="hero-text">
+                <p class="hero-kicker">Project</p>
+                <div class="hero-title-row">
+                  <h1 class="hero-name">KBO 리그 통합 데이터 플랫폼</h1>
+                  <span class="hero-period">2024.05 ~ 2024.06</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="overview" class="content-section detail-section">
+            <h2 class="section-title">개요</h2>
+            <div class="section-content">
+              <p class="detail-paragraph">
+                흩어진 KBO 리그 정보를 한곳에 모아 경기 데이터, 뉴스, 구단 정보,
+                커뮤니티를 빠르게 탐색할 수 있는<br>
+                통합형 야구 정보 플랫폼을 구축했습니다.
+              </p>
+              <h3 class="detail-subtitle">주요 기능</h3>
+              <ol class="detail-steps">
+                <li>
+                  <h3>데이터 통합</h3>
+                  <p>실시간 경기/선수 데이터를 모아 핵심 지표를 한 화면에 제공</p>
+                </li>
+                <li>
+                  <h3>컨텍스트 보강</h3>
+                  <p>야구장 위치 기반 날씨 정보와 매칭해 경기 몰입도 강화</p>
+                </li>
+                <li>
+                  <h3>뉴스 자동 수집</h3>
+                  <p>최신 KBO 뉴스를 자동 수집해 피드 형태로 업데이트</p>
+                </li>
+                <li>
+                  <h3>구단 인사이트</h3>
+                  <p>모기업 증권 정보를 차트/지표로 시각화해 비교 가능</p>
+                </li>
+                <li>
+                  <h3>커뮤니티</h3>
+                  <p>응원 게시판, 댓글, 필터링/신고로 사용자 참여 유도</p>
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <section id="contributions" class="content-section detail-section">
+            <h2 class="section-title">주요 역할 및 기여</h2>
+            <div class="section-content">
+              <div class="detail-vertical">
+                <div class="detail-vertical-item">
+                  <h3>데이터 수집 자동화</h3>
+                  <p>크롤러 개발 및 구조 변경 대응 로직 구현</p>
+                </div>
+                <div class="detail-vertical-item">
+                  <h3>백엔드 통합 설계</h3>
+                  <p>Django/Spring MVC 이기종 백엔드 통신 설계</p>
+                </div>
+                <div class="detail-vertical-item">
+                  <h3>품질 모니터링</h3>
+                  <p>크롤링 스케줄러 및 오류 감지로 데이터 품질 확보</p>
+                </div>
+                <div class="detail-vertical-item">
+                  <h3>시각화 최적화</h3>
+                  <p>Highcharts 대시보드 구성 및 인터랙션 최적화</p>
+                </div>
+                <div class="detail-vertical-item">
+                  <h3>커뮤니티 설계</h3>
+                  <p>응원 커뮤니티 기획 및 UI/UX 설계</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="tech-stack" class="content-section detail-section">
+            <h2 class="section-title">기술 스택</h2>
+            <div class="section-content">
+              <div class="detail-stack">
+                <div class="detail-stack-group">
+                  <h3 class="detail-stack-title">Front-end</h3>
+                  <div class="detail-tags">
+                    <span class="detail-tag">HTML5</span>
+                    <span class="detail-tag">CSS3</span>
+                    <span class="detail-tag">JavaScript</span>
                   </div>
-                  <div class="detail-meta-item">
-                    <span class="detail-meta-label">핵심 기능</span>
-                    <span class="detail-meta-value">실시간 경기/선수 데이터, 뉴스 자동 수집, 커뮤니티</span>
+                </div>
+                <div class="detail-stack-group">
+                  <h3 class="detail-stack-title">Back-end</h3>
+                  <div class="detail-tags">
+                    <span class="detail-tag">Django</span>
+                    <span class="detail-tag">Spring MVC</span>
+                    <span class="detail-tag">RESTful API</span>
                   </div>
-                  <div class="detail-meta-item">
-                    <span class="detail-meta-label">스택</span>
-                    <span class="detail-meta-value">HTML5, CSS3, JavaScript, Django, Spring MVC, MySQL, Oracle</span>
+                </div>
+                <div class="detail-stack-group">
+                  <h3 class="detail-stack-title">Data</h3>
+                  <div class="detail-tags">
+                    <span class="detail-tag">BeautifulSoup4</span>
+                    <span class="detail-tag">Selenium</span>
+                  </div>
+                </div>
+                <div class="detail-stack-group">
+                  <h3 class="detail-stack-title">Database</h3>
+                  <div class="detail-tags">
+                    <span class="detail-tag">MySQL</span>
+                    <span class="detail-tag">Oracle</span>
+                  </div>
+                </div>
+                <div class="detail-stack-group">
+                  <h3 class="detail-stack-title">Tools</h3>
+                  <div class="detail-tags">
+                    <span class="detail-tag">Git</span>
+                    <span class="detail-tag">GitHub</span>
                   </div>
                 </div>
               </div>
-              <div class="detail-hero-media">
-                <img src="./image/kbo/cover.png" alt="KBO 리그 통합 데이터 플랫폼 메인 화면">
-              </div>
             </div>
           </section>
 
-          <section class="content-section detail-section">
-            <h2 class="section-title">프로젝트 목표 및 개요</h2>
-            <div class="section-content">
-              <div class="detail-quote">
-                <p>흩어진 KBO 리그 정보를 통합하여 팬들에게 경기 데이터, 뉴스, 구단 정보, 커뮤니티 기능까지</p>
-                <p><strong>직관적으로 즐길 수 있는 통합형 야구 정보 플랫폼</strong>을 개발했습니다.</p>
-              </div>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">주요 기능</h2>
-            <div class="section-content">
-              <ul class="detail-list">
-                <li>실시간 KBO 경기 및 선수 데이터 통합 제공</li>
-                <li>야구장 위치 기반 날씨 정보 연동 및 시각화</li>
-                <li>최신 KBO 뉴스 자동 수집 및 뉴스 피드 제공</li>
-                <li>구단별 모기업 증권 정보 시각화 (차트/지표 제공)</li>
-                <li>응원 게시판 커뮤니티 기능 및 댓글/필터링/신고 시스템</li>
-                <li>데이터 출처, 오류 모니터링, 사용자 피드백 기반 신뢰성 확보</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">기술 스택</h2>
-            <div class="section-content">
-              <div class="detail-tags">
-                <span class="detail-tag">HTML5</span>
-                <span class="detail-tag">CSS3</span>
-                <span class="detail-tag">JavaScript</span>
-                <span class="detail-tag">Django</span>
-                <span class="detail-tag">Spring MVC</span>
-                <span class="detail-tag">RESTful API</span>
-                <span class="detail-tag">BeautifulSoup4</span>
-                <span class="detail-tag">Selenium</span>
-                <span class="detail-tag">MySQL</span>
-                <span class="detail-tag">Oracle</span>
-                <span class="detail-tag">Git</span>
-                <span class="detail-tag">GitHub</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">기술 선택 요약</h2>
-            <div class="section-content">
-              <p class="detail-paragraph">
-                Python 기반 크롤러로 다양한 외부 소스를 안정적으로 수집하고, RESTful API 기반 백엔드 통합으로
-                Django와 Spring MVC의 역할을 분리하여 유기적으로 연결했습니다. Highcharts와 커스텀 JS로
-                대용량 데이터 시각화 성능을 최적화했습니다.
-              </p>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">주요 역할 및 기여</h2>
-            <div class="section-content">
-              <ul class="detail-list">
-                <li>데이터 크롤러 개발 및 구조 변경 대응 로직 구현 (BeautifulSoup4, Selenium)</li>
-                <li>Django / Spring MVC 이기종 백엔드 REST 통신 및 역할 분리 설계</li>
-                <li>크롤링 스케줄러 및 오류 감지 로직 구현으로 데이터 품질 확보</li>
-                <li>Highcharts 기반 대시보드 시각화 구성 및 인터랙션 최적화</li>
-                <li>사용자 중심 응원 커뮤니티 기능 기획 및 UI/UX 설계</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">주요 성과</h2>
-            <div class="section-content">
-              <ul class="detail-list">
-                <li>웹사이트 구조 변경 대응을 위한 크롤링 안정성 확보</li>
-                <li>Django &amp; Spring MVC 기반 이기종 백엔드 통합 환경 구축</li>
-                <li>대용량 KBO 데이터 시각화 성능 및 응답 속도 개선</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">기술적 도전 및 해결</h2>
-            <div class="section-content">
-              <ul class="detail-list">
-                <li>
-                  크롤링 대상 사이트 구조 변경 대응
-                  <p class="detail-sub">XPath 우선순위 로직과 CSS Selector 대체로 자동 크롤링 방식 전환</p>
-                </li>
-                <li>
-                  이기종 백엔드 통합 설계
-                  <p class="detail-sub">RESTful API 표준화 및 공통 인증 시스템 구축</p>
-                </li>
-                <li>
-                  실시간 데이터 시각화 성능 저하 해결
-                  <p class="detail-sub">Highcharts 시리즈 최적화, 서버 측 데이터 전처리, 지연 로딩 적용</p>
-                </li>
-              </ul>
-              <div class="detail-media">
-                <img src="./image/kbo/crawling.gif" alt="크롤링 구조 변경 대응 시각화">
-              </div>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
-            <h2 class="section-title">시스템 아키텍처</h2>
-            <div class="section-content">
-              <div class="detail-media">
-                <img src="./image/kbo/architecture.png" alt="시스템 아키텍처 다이어그램">
-              </div>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
+          <section id="screens" class="content-section detail-section">
             <h2 class="section-title">주요 화면</h2>
             <div class="section-content">
               <div class="detail-gallery">
@@ -179,34 +193,39 @@
                 <img src="./image/kbo/screen-2.png" alt="KBO 플랫폼 화면 2">
                 <img src="./image/kbo/screen-3.png" alt="KBO 플랫폼 화면 3">
               </div>
+              <div class="detail-media">
+                <img src="./image/kbo/crawling.gif" alt="크롤링 구조 변경 대응 시각화">
+              </div>
             </div>
           </section>
 
-          <section class="content-section detail-section">
-            <h2 class="section-title">성장 및 배움</h2>
+          <section id="retrospective" class="content-section detail-section">
+            <h2 class="section-title">프로젝트 후기</h2>
             <div class="section-content">
-              <ul class="detail-list">
-                <li>크롤링 자동화 및 구조 변경 대응 로직 개발 경험</li>
-                <li>이기종 시스템 통합 설계 및 REST API 기반 통신 구현 역량 강화</li>
-                <li>데이터 기반 서비스 기획 및 사용자 시각화 경험 축적</li>
-                <li>데이터 수집 → 정제 → 시각화까지 전체 파이프라인 실전 경험 확보</li>
-              </ul>
+              <div class="detail-duo">
+                <article class="detail-duo-card">
+                  <h3>향후 개선 방향</h3>
+                  <ul class="detail-list">
+                    <li>경기 흐름 예측 모델 도입으로 인사이트 제공 확대</li>
+                    <li>타자·투수 심화 지표 및 비교 대시보드 고도화</li>
+                    <li>공식 데이터와의 정합성 검증 및 품질 지표 공개</li>
+                    <li>모바일 사용성을 고려한 경량 UI/필터링 개선</li>
+                  </ul>
+                </article>
+                <article class="detail-duo-card">
+                  <h3>성장 및 배움</h3>
+                  <ul class="detail-list">
+                    <li>크롤링 파이프라인 안정화와 구조 변경 대응 경험</li>
+                    <li>이기종 백엔드 통합 및 API 설계의 중요성 체득</li>
+                    <li>데이터 수집 → 정제 → 시각화 전 과정 운영 경험</li>
+                    <li>정보 구조화와 사용자 탐색 흐름 설계 역량 강화</li>
+                  </ul>
+                </article>
+              </div>
             </div>
           </section>
 
-          <section class="content-section detail-section">
-            <h2 class="section-title">향후 개선 방향</h2>
-            <div class="section-content">
-              <ul class="detail-list">
-                <li>머신러닝 기반 경기 예측 기능 도입</li>
-                <li>타자·투수 심화 지표 시각화 기능 확장</li>
-                <li>공개 API 제공을 통한 외부 활용성 확대</li>
-                <li>SNS 연동 커뮤니티 및 댓글 강화 기능 도입</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="content-section detail-section">
+          <section id="demo" class="content-section detail-section">
             <h2 class="section-title">프로젝트 시연 영상</h2>
             <div class="section-content">
               <div class="detail-media">

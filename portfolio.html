@@ -410,11 +410,20 @@
         card.dataset.originalText = info.textContent || '';
       }
 
+      function swapText(nextText) {
+        if (!info) return;
+        info.classList.add('is-fading');
+        window.setTimeout(() => {
+          info.textContent = nextText;
+          info.classList.remove('is-fading');
+        }, 180);
+      }
+
       function showCopied() {
         if (!info) return;
-        info.textContent = '복사됨';
+        swapText('복사됨');
         window.setTimeout(() => {
-          info.textContent = card.dataset.originalText || '';
+          swapText(card.dataset.originalText || '');
         }, 1200);
       }
 
