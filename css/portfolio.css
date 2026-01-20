@@ -305,6 +305,95 @@ body {
   max-width: 600px;
 }
 
+.hero-simple-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px;
+  gap: 24px;
+  align-items: start;
+}
+
+.hero-simple-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-simple-text .hero-description {
+  max-width: none;
+}
+
+.hero-image-row {
+  width: 100%;
+  max-width: 20px;
+  height: 20px;
+}
+
+.hero-image-placeholder.hero-image-row {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-image-row img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-card {
+  background: rgba(13, 18, 28, 0.75);
+  border: 1px solid rgba(48, 54, 61, 0.7);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+}
+
+.hero-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-card-media {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.hero-contact {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(107, 158, 255, 0.35);
+  background: rgba(33, 38, 45, 0.6);
+  color: var(--text);
+  font-size: 13px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.hero-contact:hover {
+  border-color: rgba(107, 158, 255, 0.7);
+  color: #f0f6fc;
+  transform: translateY(-1px);
+}
+
+.hero-image-card {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  aspect-ratio: 4 / 5;
+}
+
+.hero-image-card img {
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-info {
   display: flex;
   flex-direction: column;
@@ -393,9 +482,25 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 0% 75%;
   border-radius: 20px;
   position: relative;
   z-index: 1;
+}
+
+.hero-image-full {
+  width: 100%;
+}
+
+.hero-image-placeholder.hero-image-full {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
+.hero-image-placeholder.hero-image-full img {
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 섹션 스타일 - 터미널 테마에 맞게, 대조적 */
@@ -1736,6 +1841,31 @@ section:nth-child(6) { animation-delay: 0.8s; }
     gap: 28px;
   }
 
+  .hero-simple-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-simple-text {
+    align-items: center;
+  }
+
+  .hero-image-row {
+    max-width: 300px;
+  }
+
+  .hero-card {
+    padding: 22px;
+  }
+
+  .hero-card-media {
+    justify-content: center;
+  }
+
+  .hero-image-card {
+    max-width: 300px;
+  }
+
   .hero-name {
     font-size: 40px;
   }
@@ -1756,6 +1886,11 @@ section:nth-child(6) { animation-delay: 0.8s; }
   .hero-image-placeholder {
     width: 260px;
     height: 300px;
+  }
+
+  .hero-image-placeholder.hero-image-card {
+    width: 100%;
+    height: auto;
   }
 
   .project-detail-hero .section-content {
@@ -1896,6 +2031,31 @@ section:nth-child(6) { animation-delay: 0.8s; }
     gap: 28px;
   }
 
+  .hero-simple-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-simple-text {
+    align-items: center;
+  }
+
+  .hero-image-row {
+    max-width: 260px;
+  }
+
+  .hero-card {
+    padding: 20px;
+  }
+
+  .hero-card-media {
+    justify-content: center;
+  }
+
+  .hero-image-card {
+    max-width: 260px;
+  }
+
   .hero-name {
     font-size: 34px;
   }
@@ -1927,6 +2087,11 @@ section:nth-child(6) { animation-delay: 0.8s; }
   .hero-image-placeholder {
     width: 220px;
     height: 260px;
+  }
+
+  .hero-image-placeholder.hero-image-card {
+    width: 100%;
+    height: auto;
   }
 
   .projects-grid {
