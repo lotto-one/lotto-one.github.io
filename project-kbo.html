@@ -39,9 +39,9 @@
             <span class="nav-icon">></span>
             <span class="nav-text">주요 역할 및 기여</span>
           </a>
-          <a href="#tech-stack">
+          <a href="#architecture">
             <span class="nav-icon">></span>
-            <span class="nav-text">기술 스택</span>
+            <span class="nav-text">아키텍처</span>
           </a>
           <a href="#screens">
             <span class="nav-icon">></span>
@@ -121,74 +121,61 @@
             </div>
           </section>
 
+          <section id="architecture" class="content-section detail-section">
+            <h2 class="section-title">아키텍처</h2>
+            <div class="section-content">
+              <div class="detail-media">
+                <button type="button" class="image-zoom-button" aria-label="KBO 아키텍처 다이어그램 확대 보기">
+                  <img src="./image/kbo/kbo_architecture.svg" alt="KBO 아키텍처 다이어그램" class="architecture-zoom-target">
+                </button>
+              </div>
+            </div>
+          </section>
+
           <section id="contributions" class="content-section detail-section">
             <h2 class="section-title">주요 역할 및 기여</h2>
             <div class="section-content">
               <div class="detail-vertical">
                 <div class="detail-vertical-item">
-                  <h3>데이터 수집 자동화</h3>
-                  <p>크롤러 개발 및 구조 변경 대응 로직 구현</p>
+                  <div class="detail-vertical-header">
+                    <h3>데이터 수집 자동화 및 DB 연동</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">BeautifulSoup4</span>
+                      <span class="detail-inline-tag">Oracle</span>
+                    </div>
+                  </div>
+                  <p>BeautifulSoup로 네이버 야구(KBO) 경기 일정 크롤링 로직 구현 및 Oracle DB 자동 적재</p>
                 </div>
                 <div class="detail-vertical-item">
-                  <h3>백엔드 통합 설계</h3>
-                  <p>Django/Spring MVC 이기종 백엔드 통신 설계</p>
+                  <div class="detail-vertical-header">
+                    <h3>이기종 시스템 간 통신 설계</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">Django</span>
+                      <span class="detail-inline-tag">Spring MVC</span>
+                    </div>
+                  </div>
+                  <p>Django(Python)와 Spring(Java) 간 크로스 통신 및 데이터 전송 인터페이스 구현</p>
                 </div>
                 <div class="detail-vertical-item">
-                  <h3>품질 모니터링</h3>
-                  <p>크롤링 스케줄러 및 오류 감지로 데이터 품질 확보</p>
+                  <div class="detail-vertical-header">
+                    <h3>도메인 맞춤형 스케줄링 최적화</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">Spring Scheduler</span>
+                      <span class="detail-inline-tag">Java</span>
+                    </div>
+                  </div>
+                  <p>Spring Scheduler로 자동 크롤링 구현, 월요일 경기 없음 특성을 반영해 화~일요일만 동작하도록 최적화</p>
                 </div>
                 <div class="detail-vertical-item">
-                  <h3>시각화 최적화</h3>
-                  <p>Highcharts 대시보드 구성 및 인터랙션 최적화</p>
-                </div>
-                <div class="detail-vertical-item">
-                  <h3>커뮤니티 설계</h3>
-                  <p>응원 커뮤니티 기획 및 UI/UX 설계</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section id="tech-stack" class="content-section detail-section">
-            <h2 class="section-title">기술 스택</h2>
-            <div class="section-content">
-              <div class="detail-stack">
-                <div class="detail-stack-group">
-                  <h3 class="detail-stack-title">Front-end</h3>
-                  <div class="detail-tags">
-                    <span class="detail-tag">HTML5</span>
-                    <span class="detail-tag">CSS3</span>
-                    <span class="detail-tag">JavaScript</span>
+                  <div class="detail-vertical-header">
+                    <h3>UI 기획 및 화면 구성</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">HTML5</span>
+                      <span class="detail-inline-tag">CSS3</span>
+                      <span class="detail-inline-tag">JavaScript</span>
+                    </div>
                   </div>
-                </div>
-                <div class="detail-stack-group">
-                  <h3 class="detail-stack-title">Back-end</h3>
-                  <div class="detail-tags">
-                    <span class="detail-tag">Django</span>
-                    <span class="detail-tag">Spring MVC</span>
-                    <span class="detail-tag">RESTful API</span>
-                  </div>
-                </div>
-                <div class="detail-stack-group">
-                  <h3 class="detail-stack-title">Data</h3>
-                  <div class="detail-tags">
-                    <span class="detail-tag">BeautifulSoup4</span>
-                    <span class="detail-tag">Selenium</span>
-                  </div>
-                </div>
-                <div class="detail-stack-group">
-                  <h3 class="detail-stack-title">Database</h3>
-                  <div class="detail-tags">
-                    <span class="detail-tag">MySQL</span>
-                    <span class="detail-tag">Oracle</span>
-                  </div>
-                </div>
-                <div class="detail-stack-group">
-                  <h3 class="detail-stack-title">Tools</h3>
-                  <div class="detail-tags">
-                    <span class="detail-tag">Git</span>
-                    <span class="detail-tag">GitHub</span>
-                  </div>
+                  <p>야구 일정과 데이터를 직관적으로 확인할 수 있도록 UI 기획 및 레이아웃 구성</p>
                 </div>
               </div>
             </div>
@@ -197,9 +184,7 @@
           <section id="screens" class="content-section detail-section">
             <h2 class="section-title">주요 화면</h2>
             <div class="section-content">
-              <div class="detail-media">
-                <img src="./image/kbo/crawling.gif" alt="크롤링 구조 변경 대응 시각화">
-              </div>
+              <p class="detail-paragraph">주요 화면은 PPT 슬라이드로 확인할 수 있습니다.</p>
             </div>
           </section>
 
@@ -232,13 +217,38 @@
           <section id="demo" class="content-section detail-section">
             <h2 class="section-title">프로젝트 시연 영상</h2>
             <div class="section-content">
-              <div class="detail-media">
-                <img src="./image/kbo/demo.gif" alt="KBO 프로젝트 시연 영상">
+              <div class="detail-duo">
+                <article class="detail-duo-card">
+                  <h3>크롤링 시연</h3>
+                  <div class="detail-media">
+                    <button type="button" class="gif-restart" aria-label="크롤링 시연 클릭 시 처음부터 재생">
+                      <img src="./image/kbo/crawling.gif" alt="크롤링 구조 변경 대응 시각화">
+                    </button>
+                    <p class="gif-hint">클릭 시 처음부터 재생</p>
+                  </div>
+                </article>
+                <article class="detail-duo-card">
+                  <h3>전체 프로젝트 시연</h3>
+                  <div class="detail-media">
+                    <button type="button" class="gif-restart" aria-label="전체 프로젝트 시연 클릭 시 처음부터 재생">
+                      <img src="./image/kbo/demo.gif" alt="KBO 프로젝트 시연 영상">
+                    </button>
+                    <p class="gif-hint">클릭 시 처음부터 재생</p>
+                  </div>
+                </article>
               </div>
             </div>
           </section>
         </main>
       </div>
+    </div>
+  </div>
+
+  <div class="image-modal" hidden aria-hidden="true" role="dialog" aria-label="이미지 확대 보기">
+    <div class="image-modal-backdrop" data-close="true"></div>
+    <div class="image-modal-content">
+      <button type="button" class="image-modal-close" aria-label="닫기">Close</button>
+      <img src="" alt="" class="image-modal-image">
     </div>
   </div>
 
@@ -344,6 +354,73 @@
       }, { passive: true });
 
       update();
+    })();
+
+    (() => {
+      const trigger = document.querySelector('.architecture-zoom-target');
+      const modal = document.querySelector('.image-modal');
+      const modalImage = modal?.querySelector('.image-modal-image');
+      const closeButton = modal?.querySelector('.image-modal-close');
+
+      if (!trigger || !modal || !modalImage) return;
+
+      const openModal = () => {
+        modalImage.src = trigger.currentSrc || trigger.src;
+        modalImage.alt = trigger.alt || '확대 이미지';
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeButton?.focus();
+      };
+
+      const closeModal = () => {
+        modal.hidden = true;
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        trigger.focus();
+      };
+
+      trigger.addEventListener('click', openModal);
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openModal();
+        }
+      });
+
+      modal.addEventListener('click', (event) => {
+        if (event.target && event.target.closest('[data-close="true"]')) {
+          closeModal();
+        }
+      });
+
+      closeButton?.addEventListener('click', closeModal);
+
+      document.addEventListener('keydown', (event) => {
+        if (!modal.hidden && event.key === 'Escape') {
+          closeModal();
+        }
+      });
+    })();
+
+    (() => {
+      document.querySelectorAll('.gif-restart').forEach((button) => {
+        const img = button.querySelector('img');
+        if (!img) return;
+        button.addEventListener('click', () => {
+          const src = img.src;
+          img.src = '';
+          img.src = src;
+        });
+        button.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            const src = img.src;
+            img.src = '';
+            img.src = src;
+          }
+        });
+      });
     })();
   </script>
 </body>
