@@ -35,17 +35,13 @@
             <span class="nav-icon">></span>
             <span class="nav-text">개요</span>
           </a>
-          <a href="#contributions">
-            <span class="nav-icon">></span>
-            <span class="nav-text">주요 역할 및 기여</span>
-          </a>
           <a href="#architecture">
             <span class="nav-icon">></span>
             <span class="nav-text">아키텍처</span>
           </a>
-          <a href="#screens">
+          <a href="#contributions">
             <span class="nav-icon">></span>
-            <span class="nav-text">주요 화면</span>
+            <span class="nav-text">역할 및 기여</span>
           </a>
           <a href="#retrospective">
             <span class="nav-icon">></span>
@@ -133,7 +129,7 @@
           </section>
 
           <section id="contributions" class="content-section detail-section">
-            <h2 class="section-title">주요 역할 및 기여</h2>
+            <h2 class="section-title">역할 및 기여</h2>
             <div class="section-content">
               <div class="detail-vertical">
                 <div class="detail-vertical-item">
@@ -165,6 +161,11 @@
                     </div>
                   </div>
                   <p>Spring Scheduler로 자동 크롤링 구현, 월요일 경기 없음 특성을 반영해 화~일요일만 동작하도록 최적화</p>
+                  <div class="detail-media">
+                    <button type="button" class="image-zoom-button" aria-label="스케줄링 설정 이미지 확대 보기">
+                      <img src="./image/kbo/schedule.jpg" alt="KBO 스케줄링 설정 화면">
+                    </button>
+                  </div>
                 </div>
                 <div class="detail-vertical-item">
                   <div class="detail-vertical-header">
@@ -176,15 +177,26 @@
                     </div>
                   </div>
                   <p>야구 일정과 데이터를 직관적으로 확인할 수 있도록 UI 기획 및 레이아웃 구성</p>
+                  <div class="detail-ui-gallery">
+                    <button type="button" class="image-zoom-button" aria-label="KBO UI 화면 예시 1 확대 보기">
+                      <img src="./image/kbo/ui_1.jpg" alt="KBO UI 화면 예시 1">
+                    </button>
+                    <button type="button" class="image-zoom-button" aria-label="KBO UI 화면 예시 2 확대 보기">
+                      <img src="./image/kbo/ui_2.jpg" alt="KBO UI 화면 예시 2">
+                    </button>
+                  </div>
+                </div>
+                <div class="detail-vertical-item">
+                  <div class="detail-vertical-header">
+                    <h3>프로젝트 일정 및 협업 관리</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">Trello</span>
+                      <span class="detail-inline-tag">Git</span>
+                    </div>
+                  </div>
+                  <p>Trello 칸반 보드로 일정 관리 주도, 작업 단위 세분화 및 우선순위 설정으로 개발 프로세스 효율화</p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section id="screens" class="content-section detail-section">
-            <h2 class="section-title">주요 화면</h2>
-            <div class="section-content">
-              <p class="detail-paragraph">주요 화면은 PPT 슬라이드로 확인할 수 있습니다.</p>
             </div>
           </section>
 
@@ -357,19 +369,23 @@
     })();
 
     (() => {
-      const trigger = document.querySelector('.architecture-zoom-target');
+      const triggers = Array.from(document.querySelectorAll('.image-zoom-button'));
       const modal = document.querySelector('.image-modal');
       const modalImage = modal?.querySelector('.image-modal-image');
       const closeButton = modal?.querySelector('.image-modal-close');
+      let lastTrigger = null;
 
-      if (!trigger || !modal || !modalImage) return;
+      if (triggers.length === 0 || !modal || !modalImage) return;
 
-      const openModal = () => {
-        modalImage.src = trigger.currentSrc || trigger.src;
-        modalImage.alt = trigger.alt || '확대 이미지';
+      const openModal = (trigger) => {
+        const img = trigger.querySelector('img');
+        if (!img) return;
+        modalImage.src = img.currentSrc || img.src;
+        modalImage.alt = img.alt || '확대 이미지';
         modal.hidden = false;
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        lastTrigger = trigger;
         closeButton?.focus();
       };
 
@@ -377,15 +393,17 @@
         modal.hidden = true;
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
-        trigger.focus();
+        lastTrigger?.focus();
       };
 
-      trigger.addEventListener('click', openModal);
-      trigger.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          openModal();
-        }
+      triggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => openModal(trigger));
+        trigger.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openModal(trigger);
+          }
+        });
       });
 
       modal.addEventListener('click', (event) => {
