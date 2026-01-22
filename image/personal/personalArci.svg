@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="760" viewBox="0 0 1700 760">
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">    <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.12"/>  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">    <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>  </marker>
+  <style><![CDATA[.title{font:700 16px "Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif;}.item{font:500 14px "Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif; fill:#0F172A;}.arrow{stroke:#334155; stroke-width:2.2;}.arrowDash{stroke:#334155; stroke-width:2.2; stroke-dasharray:6 6;}.labelText{font:600 12px "Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",Arial,sans-serif; fill:#0F172A;}]]></style>
+</defs>
+<g class="box" filter="url(#shadow)">
+<rect x="80" y="290" width="190" height="170" rx="16" ry="16" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+<rect x="80" y="290" width="190" height="44" rx="16" ry="16" fill="#6B7280"/>
+<rect x="80" y="318" width="190" height="16" fill="#6B7280"/>
+<text x="98" y="312.0" class="title" fill="white" dominant-baseline="middle">사용자</text>
+<rect x="98" y="352" width="154" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="112" y="369.0" class="item" dominant-baseline="middle">웹 브라우저 / 모바일</text>
+</g>
+<g class="box" filter="url(#shadow)">
+<rect x="330" y="250" width="290" height="250" rx="16" ry="16" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+<rect x="330" y="250" width="290" height="44" rx="16" ry="16" fill="#2563EB"/>
+<rect x="330" y="278" width="290" height="16" fill="#2563EB"/>
+<text x="348" y="272.0" class="title" fill="white" dominant-baseline="middle">프론트엔드</text>
+<rect x="348" y="312" width="254" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="362" y="329.0" class="item" dominant-baseline="middle">Vue.js 클라이언트</text>
+<rect x="348" y="360" width="254" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="362" y="377.0" class="item" dominant-baseline="middle">상태 관리</text>
+<rect x="348" y="408" width="254" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="362" y="425.0" class="item" dominant-baseline="middle">반응형 UI</text>
+</g>
+<g class="box" filter="url(#shadow)">
+<rect x="690" y="240" width="310" height="270" rx="16" ry="16" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+<rect x="690" y="240" width="310" height="44" rx="16" ry="16" fill="#059669"/>
+<rect x="690" y="268" width="310" height="16" fill="#059669"/>
+<text x="708" y="262.0" class="title" fill="white" dominant-baseline="middle">백엔드</text>
+<rect x="708" y="302" width="274" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="722" y="319.0" class="item" dominant-baseline="middle">Spring Boot API</text>
+<rect x="708" y="350" width="274" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="722" y="367.0" class="item" dominant-baseline="middle">사용자 인증</text>
+<rect x="708" y="398" width="274" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="722" y="415.0" class="item" dominant-baseline="middle">데이터 관리</text>
+<rect x="708" y="446" width="274" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="722" y="463.0" class="item" dominant-baseline="middle">이메일 인증</text>
+</g>
+<g class="box" filter="url(#shadow)">
+<rect x="1070" y="120" width="520" height="260" rx="16" ry="16" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+<rect x="1070" y="120" width="520" height="44" rx="16" ry="16" fill="#7C3AED"/>
+<rect x="1070" y="148" width="520" height="16" fill="#7C3AED"/>
+<text x="1088" y="142.0" class="title" fill="white" dominant-baseline="middle">AI 엔진</text>
+<rect x="1088" y="182" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="199.0" class="item" dominant-baseline="middle">마스크 감지</text>
+<rect x="1088" y="230" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="247.0" class="item" dominant-baseline="middle">퍼스널 컬러 분석</text>
+<rect x="1088" y="278" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="295.0" class="item" dominant-baseline="middle">가상 메이크업</text>
+</g>
+<g class="box" filter="url(#shadow)">
+<rect x="1070" y="420" width="520" height="270" rx="16" ry="16" fill="white" stroke="#CBD5E1" stroke-width="2"/>
+<rect x="1070" y="420" width="520" height="44" rx="16" ry="16" fill="#D97706"/>
+<rect x="1070" y="448" width="520" height="16" fill="#D97706"/>
+<text x="1088" y="442.0" class="title" fill="white" dominant-baseline="middle">데이터 저장소</text>
+<rect x="1088" y="482" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="499.0" class="item" dominant-baseline="middle">RDBMS</text>
+<rect x="1088" y="530" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="547.0" class="item" dominant-baseline="middle">Redis</text>
+<rect x="1088" y="578" width="484" height="34" rx="17.0" ry="17.0" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+<text x="1102" y="595.0" class="item" dominant-baseline="middle">파일 저장소</text>
+</g>
+<line x1="270" y1="365.0" x2="330" y2="365.0" class="arrow" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="256.6" y="338.0" width="86.80000000000001" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="300.0" y="351.0" class="labelText" dominant-baseline="middle" text-anchor="middle">UI 상호작용</text>
+</g>
+<line x1="330" y1="465.0" x2="270" y2="465.0" class="arrow" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="265.0" y="466.0" width="70.0" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="300.0" y="479.0" class="labelText" dominant-baseline="middle" text-anchor="middle">결과 표시</text>
+</g>
+<line x1="620" y1="347.0" x2="690" y2="347.0" class="arrow" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="615.8" y="320.0" width="78.4" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="655.0" y="333.0" class="labelText" dominant-baseline="middle" text-anchor="middle">API 요청</text>
+</g>
+<line x1="690" y1="397.0" x2="620" y2="397.0" class="arrow" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="615.8" y="398.0" width="78.4" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="655.0" y="411.0" class="labelText" dominant-baseline="middle" text-anchor="middle">API 응답</text>
+</g>
+<path d="M 1000 305.0 L 1035.0 305.0 L 1035.0 310.0 L 1070 310.0" class="arrow" fill="none" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="974.45" y="278.0" width="103.60000000000001" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="1026.25" y="291.0" class="labelText" dominant-baseline="middle" text-anchor="middle">이미지 처리 요청</text>
+</g>
+<path d="M 1070 370.0 L 1035.0 370.0 L 1035.0 355.0 L 1000 355.0" class="arrow" fill="none" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="1005.25" y="371.0" width="70.0" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="1040.25" y="384.0" class="labelText" dominant-baseline="middle" text-anchor="middle">분석 결과</text>
+</g>
+<path d="M 1000 445.0 L 1035.0 445.0 L 1035.0 495.0 L 1070 495.0" class="arrow" fill="none" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="978.8000000000001" y="414.0" width="95.2" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="1026.4" y="427.0" class="labelText" dominant-baseline="middle" text-anchor="middle">데이터 CRUD</text>
+</g>
+<path d="M 1070 555.0 L 1035.0 555.0 L 1035.0 515.0 L 1000 515.0" class="arrow" fill="none" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="998.1999999999999" y="560.0" width="95.2" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="1045.8" y="573.0" class="labelText" dominant-baseline="middle" text-anchor="middle">인증/세션 정보</text>
+</g>
+<path d="M 1000 485.0 L 960 485.0 L 960 695.0 L 1070 695.0" class="arrowDash" fill="none" marker-end="url(#arrow)"/>
+<g class="label">
+<rect x="926.4" y="664.0" width="128.8" height="26" rx="13" ry="13" fill="white" stroke="#CBD5E1" stroke-width="1.2"/>
+<text x="990.8" y="677.0" class="labelText" dominant-baseline="middle" text-anchor="middle">이미지 파일 저장/조회</text>
+</g>
+<g>
+<rect x="842" y="464" width="140" height="28" rx="14" ry="14" fill="#ECFDF5" stroke="#34D399" stroke-width="1.2"/>
+<text x="912" y="478" class="labelText" text-anchor="middle" dominant-baseline="middle">인증 코드</text>
+</g>
+</svg>

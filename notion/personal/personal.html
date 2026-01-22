@@ -1,0 +1,770 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>🎭 AI 이미지 분석 (마스크 &amp; 퍼스널컬러)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2f0ef993-2ef3-81ad-9ca8-cf8b5b974406" class="page sans"><header><img class="page-cover-image" src="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/7.png" style="object-position:center 0.7900000000000018%"/><h1 class="page-title" dir="auto"><strong>🎭 AI 이미지 분석 (마스크 &amp; 퍼스널컬러)</strong></h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-8183-8d3c-c1fb11c727ed" class="">📌 프로젝트 목표 및 개요</h3></div><div style="display:contents" dir="auto"><blockquote id="2f0ef993-2ef3-81e6-9d00-f251a5571960" class="">사용자에게 외모 스타일링에 대한 인사이트와 가이드를 제공하기 위해<div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-8117-9403-da9f04ac3c40" class=""><strong>마스크 착용 여부 감지, 퍼스널 컬러 진단, 가상 메이크업 시뮬레이션</strong>을 통합한</p></div><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-81e1-9dbf-fb144c32a787" class=""><strong>AI 기반 뷰티 솔루션 웹 서비스</strong>를 설계·구현했습니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-8175-9c3d-c4dfc4535e7a"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81f6-88ec-cf066138a0c1" class="">🎯 주요 기능</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8172-a6b1-faf927d537f1" class="bulleted-list"><li style="list-style-type:disc"><strong>마스크 감지 기능 (VGGNet-16 기반)</strong><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81b1-b543-f50d8f838f39" class="bulleted-list"><li style="list-style-type:circle">이미지 업로드 시 <strong>마스크 착용 여부 자동 인식</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8152-9dad-f68fc2f07e72" class="bulleted-list"><li style="list-style-type:circle">다양한 환경에서도 높은 정확도 확보 (정확도 98%)</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8180-b427-c97d8193fdc9" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 퍼스널 컬러 진단</strong><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8168-a344-d4fa5fed4386" class="bulleted-list"><li style="list-style-type:circle">이미지 분석 기반 <strong>봄/여름/가을/겨울 타입 분류</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-819b-b0e4-daa6e5f8718c" class="bulleted-list"><li style="list-style-type:circle">진단 결과에 따라 컬러 팔레트 및 스타일링 팁 제공</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-811d-822b-f99311ca9a9b" class="bulleted-list"><li style="list-style-type:disc"><strong>가상 메이크업 시뮬레이션 (BeautyGAN 활용)</strong><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81e0-a1c3-dd94274aa1dc" class="bulleted-list"><li style="list-style-type:circle">다양한 메이크업 스타일을 얼굴에 자연스럽게 시뮬레이션</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8166-bbdd-cfc131a97fa9" class="bulleted-list"><li style="list-style-type:circle">결과 저장 및 공유 기능 제공</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8110-9c62-ec79ef68064d" class="bulleted-list"><li style="list-style-type:disc"><strong>사용자 관리 및 이력 저장 기능</strong><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8171-8ce9-d26b03268662" class="bulleted-list"><li style="list-style-type:circle"><strong>Redis 기반 이메일 인증</strong>으로 보안성 강화</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8178-a070-ed058beb8e09" class="bulleted-list"><li style="list-style-type:circle"><strong>마이페이지에서 과거 진단 결과 확인</strong> 및 개인화 기능 제공</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-8194-8687-c42328259dc5"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-8156-b024-c7be8a524fa2" class="">🧩 기술 스택</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8150-8a25-fb4024c2871d" class="bulleted-list"><li style="list-style-type:disc"><strong>Frontend</strong>: Vue.js · Vuex · Vue Router · Tailwind CSS · Axios</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8182-a05b-f7d221f14661" class="bulleted-list"><li style="list-style-type:disc"><strong>Backend</strong>: Spring Boot · JPA · MyBatis</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8147-ba89-d8584b06ba10" class="bulleted-list"><li style="list-style-type:disc"><strong>AI &amp; Image Processing</strong>: TensorFlow · OpenCV · MediaPipe · BeautyGAN</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8106-b6ae-ef55a49e3d7e" class="bulleted-list"><li style="list-style-type:disc"><strong>Database / Cache</strong>: MySQL · Oracle · Redis</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-813f-baa5-f089d8a6db62" class="bulleted-list"><li style="list-style-type:disc"><strong>Infra / DevOps</strong>: Docker · Jenkins · JUnit · Selenium</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81f2-9a0d-fa9c14f03602" class="bulleted-list"><li style="list-style-type:disc"><strong>Collaboration</strong>: Git · GitHub · Notion</li></ul></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81f2-b377-ebd716b64f7a" class="">⚙️ 기술 선택 요약</h3></div><div style="display:contents" dir="auto"><blockquote id="2f0ef993-2ef3-81e8-9423-cd80f74bc323" class="">마스크 감지를 위한 VGG16, 자연스러운 스타일링을 위한 BeautyGAN을 사용하고,<div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-8130-9260-ded15176e5ec" class="">빠르고 안전한 인증 처리를 위해 <strong>Redis 기반 인증 시스템</strong>을 구성하였습니다.</p></div><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-81f0-ab5c-fa96cb180c12" class="">Docker 기반 환경 통일로 배포 효율성과 개발 속도를 높였습니다.</p></div></blockquote></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-8152-9032-c49c671c79b7"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-8191-8e30-d55b94bcd296" class="">👨‍💻 주요 역할 및 기여</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81f7-8bda-e267fb1c756e" class="bulleted-list"><li style="list-style-type:disc"><strong>사용자 중심 UI/UX 설계 및 Vue.js 기반 구현</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-812a-9460-e134ab8e8564" class="bulleted-list"><li style="list-style-type:disc"><strong>Spring Boot 백엔드와 프론트 간 API 연동 설계 및 개발</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81ea-aff8-cdf1d0178963" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 모델 학습 지원용 이미지 데이터 수집 및 증강 처리</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81fb-a674-f3ae857d8d87" class="bulleted-list"><li style="list-style-type:disc"><strong>퍼스널 컬러 진단 UI 및 결과 페이지 시각화 구현</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8196-81e7-d196bd2427e9" class="bulleted-list"><li style="list-style-type:disc"><strong>관리자 기능 개발: 회원 관리 및 시스템 모니터링 기능 추가</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-818c-9492-fca62ea34c3e"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-8144-b219-c3f1664d2796" class="">🏆 주요 성과</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81d0-bb2a-de95c4bd112c" class="bulleted-list"><li style="list-style-type:disc"><strong>VGG16 기반 마스크 감지 모델 훈련, 정확도 98% 달성</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8141-b46a-de9afa402bea" class="bulleted-list"><li style="list-style-type:disc"><strong>퍼스널 컬러 진단 알고리즘 설계 및 사용자 피드백 시스템 구축</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-810d-8770-fcbdd514c3de" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 모델을 웹 서비스에 통합하여 이미지 기반 진단 기능 실현</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81ca-9265-c52ec57e0a9b" class="bulleted-list"><li style="list-style-type:disc"><strong>Redis 인증 시스템 도입으로 인증 응답 처리 속도 개선</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-81af-8252-c9c7afc3fde2"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-8141-8695-dbea09c9bf6d" class="">💡 기술적 도전 및 해결</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-812e-97a8-e3ee25300d79" class="bulleted-list"><li style="list-style-type:disc"><strong>다양한 환경에서 마스크 감지 정확도 유지</strong><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-81da-bc42-f0bab3ccaba8" class="">→ OpenCV 기반 이미지 전처리 + 데이터 증강으로 성능 향상</p></div><div style="display:contents" dir="ltr"><figure id="2f0ef993-2ef3-8121-a0ad-e12f2445332b" class="image"><a href="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/image.png"><img style="width:2116px" src="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/image.png"/></a></figure></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-818f-9443-c4a61dea7d45" class="bulleted-list"><li style="list-style-type:disc"><strong>자연스러운 가상 메이크업 구현</strong><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-8129-b442-db0e8fb80025" class="">→ BeautyGAN 손실 함수 조정 및 부위별 매칭 최적화 적용</p></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81e5-86f9-f881a38c923c" class="bulleted-list"><li style="list-style-type:disc"><strong>이메일 인증 시스템의 보안성과 속도 확보</strong><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-8140-bd1d-ebfa29ecfc8f" class="">→ Spring Mail + Redis 조합으로 사용자 인증 처리 개선</p></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-81ad-b232-c02a773fc5ee"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81e7-9187-cb21865eebb9" class="">🏗️ 시스템 아키텍처</h3></div><div style="display:contents" dir="ltr"><figure id="2f0ef993-2ef3-81b9-9030-d8545ae06d2c" class="image"><a href="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/project3.png"><img style="width:709.984375px" src="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/project3.png"/></a></figure></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2f0ef993-2ef3-8132-b92e-f5fb96cd1921" class="code code-wrap"><code class="language-Mermaid" style="white-space:pre-wrap;word-break:break-all">graph TB
+
+    subgraph &quot;사용자&quot;
+        U[웹 브라우저 / 모바일]
+    end
+
+    subgraph &quot;프론트엔드&quot;
+        FE_Client[Vue.js 클라이언트]
+        FE_State[상태 관리]
+        FE_UI[반응형 UI]
+        
+        FE_Client --&gt; FE_State
+        FE_Client --&gt; FE_UI
+    end
+
+    subgraph &quot;백엔드&quot;
+        BE_API[Spring Boot API]
+        BE_Auth[사용자 인증]
+        BE_Persistence[데이터 관리]
+        BE_Mail[이메일 인증]
+        
+        BE_API --&gt; BE_Auth
+        BE_API --&gt; BE_Persistence
+        BE_Auth --&gt; BE_Mail
+    end
+
+    subgraph &quot;AI 엔진&quot;
+        AI_Mask[마스크 감지]
+        AI_Color[퍼스널 컬러 분석]
+        AI_Makeup[가상 메이크업]
+    end
+
+    subgraph &quot;데이터 저장소&quot;
+        DS_DB[(RDBMS)]
+        DS_Cache[(Redis)]
+        DS_File[(파일 저장소)]
+    end
+
+    %% 데이터 및 요청 흐름
+    U -- UI 상호작용 --&gt; FE_Client
+    FE_Client -- API 요청 --&gt; BE_API
+
+    BE_API -- 이미지 처리 요청 --&gt; AI_Mask
+    BE_API -- 이미지 처리 요청 --&gt; AI_Color
+    BE_API -- 이미지 처리 요청 --&gt; AI_Makeup
+
+    AI_Mask -- 분석 결과 --&gt; BE_API
+    AI_Color -- 분석 결과 --&gt; BE_API
+    AI_Makeup -- 분석 결과 --&gt; BE_API
+
+    BE_Auth -- 인증/세션 정보 --&gt; DS_Cache
+    BE_Persistence -- 데이터 CRUD --&gt; DS_DB
+    BE_API -- 이미지 파일 저장/조회 --&gt; DS_File
+    BE_Mail -- 인증 코드 --&gt; DS_Cache
+
+    BE_API -- API 응답 --&gt; FE_Client
+    FE_UI -- 결과 표시 --&gt; U</code></pre></div><div style="display:contents" dir="ltr"><figure id="2f0ef993-2ef3-818b-a6c1-ee23f0775b67" class="image"><a href="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/image%201.png"><img style="width:653.96875px" src="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/image%201.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2f0ef993-2ef3-81c0-a316-e1f0d68a5a61" class="image"><a href="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/2%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8(2%25EC%25B0%25A8).gif"><img style="width:703px" src="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/2%25ED%258C%2580%25ED%2594%2584%25EB%25A1%259C%25EC%25A0%259D%25ED%258A%25B8(2%25EC%25B0%25A8).gif"/></a></figure></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-814a-b493-f39b4bcf8146"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81f0-9e83-c00b105f3484" class="">🌱 성장 및 배움</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81a5-8791-f280f8b5d1f2" class="bulleted-list"><li style="list-style-type:disc"><strong>AI 모델의 실서비스 적용과 운영 경험 확보</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81ef-aa72-fef943fdd5c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Vue.js–Spring Boot 간 풀스택 통신 구조에 대한 실전 경험 축적</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-815c-b68b-c4f9a462e86a" class="bulleted-list"><li style="list-style-type:disc"><strong>이미지 처리 기반 성능 최적화 및 사용자 인터랙션 개선 역량 강화</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-810b-be9d-efe27742a92b" class="bulleted-list"><li style="list-style-type:disc"><strong>Git/GitHub 기반 협업 및 문제 해결 능력 향상</strong></li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-8147-b25f-cf3bbfc1d1cd"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81c1-ac38-eef8ebfcab50" class="">🚀 향후 개선 방향</h3></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-81ec-ad38-dd79253b3bb9" class="bulleted-list"><li style="list-style-type:disc">실시간 웹캠 기반 분석 기능 확장 (마스크 감지, 퍼스널 컬러 진단)</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-810b-a713-ebae058ff36a" class="bulleted-list"><li style="list-style-type:disc">가상 메이크업에 다양한 스타일/브랜드 연동 기능 추가</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-8173-9c94-e3ad9b482ae3" class="bulleted-list"><li style="list-style-type:disc">반응형 웹 고도화 및 모바일 앱 개발 연계</li></ul></div><div style="display:contents" dir="auto"><ul id="2f0ef993-2ef3-816b-9651-e93ce13fef13" class="bulleted-list"><li style="list-style-type:disc">AI 모델 경량화 및 서버 최적화를 통한 응답 속도 개선</li></ul></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-811a-9257-d22dc0e4c27e"/></div><div style="display:contents" dir="auto"><h3 id="2f0ef993-2ef3-81c4-a72c-c6687c4f6210" class="">🎥 프로젝트 시연 영상</h3></div><div style="display:contents" dir="ltr"><figure id="2f0ef993-2ef3-8113-804a-fc935cfd2337"><div class="source"><a href="%F0%9F%8E%AD%20AI%20%EC%9D%B4%EB%AF%B8%EC%A7%80%20%EB%B6%84%EC%84%9D%20(%EB%A7%88%EC%8A%A4%ED%81%AC%20&amp;%20%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC)/KakaoTalk_Video_2025-02-27-00-27-16.mp4">attachment:dfdc21c9-f7ac-4fe9-9b25-5ddd055ac479:KakaoTalk_Video_2025-02-27-00-27-16.mp4</a></div></figure></div><div style="display:contents" dir="auto"><hr id="2f0ef993-2ef3-8157-a232-c0b1c0732ee5"/></div><div style="display:contents" dir="auto"><p id="2f0ef993-2ef3-813a-a194-fc50d7cb5510" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

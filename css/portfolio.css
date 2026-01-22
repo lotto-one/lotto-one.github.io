@@ -1358,6 +1358,17 @@ section:nth-child(6) { animation-delay: 0.8s; }
   object-fit: cover;
 }
 
+.detail-ui-gallery--wide .image-zoom-button {
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+.detail-ui-gallery--wide img {
+  height: 100%;
+  object-fit: contain;
+  background: rgba(13, 18, 28, 0.35);
+}
+
 .detail-duo {
   display: flex;
   flex-direction: column;
@@ -1406,10 +1417,19 @@ section:nth-child(6) { animation-delay: 0.8s; }
   background: rgba(13, 18, 28, 0.7);
 }
 
+.detail-media video {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(48, 54, 61, 0.6);
+  background: rgba(13, 18, 28, 0.7);
+}
+
 #architecture .detail-media {
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
+  margin: 4px auto 0;
 }
 
 #architecture .detail-media img {
@@ -1553,11 +1573,10 @@ section:nth-child(6) { animation-delay: 0.8s; }
 
 .ppt-controls {
   margin-top: 12px;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
 .ppt-btn {
@@ -1566,11 +1585,25 @@ section:nth-child(6) { animation-delay: 0.8s; }
   border: 1px solid rgba(107, 158, 255, 0.4);
   background: rgba(33, 38, 45, 0.6);
   color: #d8e1ee;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.4px;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.ppt-btn.ppt-prev,
+.ppt-btn.ppt-next {
+  min-width: 52px;
+  padding: 6px 10px;
+}
+
+.ppt-btn.ppt-prev {
+  justify-self: start;
+}
+
+.ppt-btn.ppt-next {
+  justify-self: end;
 }
 
 .ppt-btn:hover {
@@ -1580,14 +1613,23 @@ section:nth-child(6) { animation-delay: 0.8s; }
 }
 
 .ppt-dots {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 8px;
-  flex: 1;
+  min-width: 0;
   justify-content: center;
   flex-wrap: nowrap;
   overflow-x: auto;
   padding: 2px 0;
+  scrollbar-width: none;
+}
+
+.ppt-dots::-webkit-scrollbar {
+  height: 0;
+}
+
+.ppt-counter {
+  justify-self: center;
 }
 
 .ppt-dot {
