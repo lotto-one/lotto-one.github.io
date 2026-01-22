@@ -62,7 +62,7 @@
                 <p class="hero-kicker">Project</p>
                 <div class="hero-title-row">
                   <h1 class="hero-name">KBO 리그 통합 데이터 플랫폼</h1>
-                  <span class="hero-period">2024.05 ~ 2024.06</span>
+                  <span class="hero-period">2024.05.03 ~ 2024.05.15</span>
                 </div>
                 <div class="ppt-slider" data-total="44" tabindex="0" aria-label="KBO 프로젝트 주요 화면 슬라이드">
                   <div class="ppt-viewport">
@@ -82,11 +82,7 @@
           <section id="overview" class="content-section detail-section">
             <h2 class="section-title">개요</h2>
             <div class="section-content">
-              <p class="detail-paragraph">
-                흩어진 KBO 리그 정보를 한곳에 모아 경기 데이터, 뉴스, 구단 정보,
-                커뮤니티를 빠르게 탐색할 수 있는<br>
-                통합형 야구 정보 플랫폼을 구축했습니다.
-              </p>
+              <p class="detail-paragraph">KBO 경기·뉴스·구단 정보를 한곳에서 빠르게 확인하는 통합형 야구 정보 플랫폼입니다.</p>
               <h3 class="detail-subtitle">주요 기능</h3>
               <ol class="detail-steps">
                 <li>
@@ -134,16 +130,6 @@
               <div class="detail-vertical">
                 <div class="detail-vertical-item">
                   <div class="detail-vertical-header">
-                    <h3>데이터 수집 자동화 및 DB 연동</h3>
-                    <div class="detail-inline-stack">
-                      <span class="detail-inline-tag">BeautifulSoup4</span>
-                      <span class="detail-inline-tag">Oracle</span>
-                    </div>
-                  </div>
-                  <p>BeautifulSoup로 네이버 야구(KBO) 경기 일정 크롤링 로직 구현 및 Oracle DB 자동 적재</p>
-                </div>
-                <div class="detail-vertical-item">
-                  <div class="detail-vertical-header">
                     <h3>이기종 시스템 간 통신 설계</h3>
                     <div class="detail-inline-stack">
                       <span class="detail-inline-tag">Django</span>
@@ -151,6 +137,31 @@
                     </div>
                   </div>
                   <p>Django(Python)와 Spring(Java) 간 크로스 통신 및 데이터 전송 인터페이스 구현</p>
+                </div>
+                <div class="detail-vertical-item">
+                  <div class="detail-vertical-header">
+                    <h3>데이터 수집 자동화 및 DB 연동</h3>
+                    <div class="detail-inline-stack">
+                      <span class="detail-inline-tag">BeautifulSoup4</span>
+                      <span class="detail-inline-tag">Selenium</span>
+                      <span class="detail-inline-tag">Oracle</span>
+                    </div>
+                  </div>
+                  <p>BeautifulSoup·Selenium으로 네이버 야구(KBO) 경기 일정 크롤링 로직 구현 및 Oracle DB 자동 적재</p>
+                  <div class="detail-ui-gallery detail-ui-gallery--even">
+                    <button type="button" class="image-zoom-button" aria-label="크롤링 화면 예시 1 확대 보기">
+                      <img src="./image/kbo/crawl_1.jpg" alt="크롤링 화면 예시 1">
+                    </button>
+                    <button type="button" class="image-zoom-button" aria-label="크롤링 화면 예시 2 확대 보기">
+                      <img src="./image/kbo/crawl_2.jpg" alt="크롤링 화면 예시 2">
+                    </button>
+                    <button type="button" class="image-zoom-button" aria-label="크롤링 화면 예시 3 확대 보기">
+                      <img src="./image/kbo/crawl_3.jpg" alt="크롤링 화면 예시 3">
+                    </button>
+                    <button type="button" class="image-zoom-button" aria-label="크롤링 화면 예시 4 확대 보기">
+                      <img src="./image/kbo/crawl_4.jpg" alt="크롤링 화면 예시 4">
+                    </button>
+                  </div>
                 </div>
                 <div class="detail-vertical-item">
                   <div class="detail-vertical-header">
@@ -195,6 +206,11 @@
                     </div>
                   </div>
                   <p>Trello 칸반 보드로 일정 관리 주도, 작업 단위 세분화 및 우선순위 설정으로 개발 프로세스 효율화</p>
+                  <div class="detail-media">
+                    <button type="button" class="image-zoom-button" aria-label="Trello 협업 보드 이미지 확대 보기">
+                      <img src="./image/kbo/trello.jpeg" alt="Trello 협업 보드 화면">
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -207,19 +223,18 @@
                 <article class="detail-duo-card">
                   <h3>향후 개선 방향</h3>
                   <ul class="detail-list">
-                    <li>경기 흐름 예측 모델 도입으로 인사이트 제공 확대</li>
-                    <li>타자·투수 심화 지표 및 비교 대시보드 고도화</li>
-                    <li>공식 데이터와의 정합성 검증 및 품질 지표 공개</li>
-                    <li>모바일 사용성을 고려한 경량 UI/필터링 개선</li>
+                    <li>크롤링 실패 감지/알림과 품질 지표로 수집 안정성 강화</li>
+                    <li>Django와 Spring 사이 데이터 규칙을 문서로 정리하고 테스트를 꾸준히 추가</li>
+                    <li>일정 예외(휴식일·우천취소) 반영을 위한 스케줄러 고도화</li>
+                    <li>경기 시작 전 알림 기능 추가로 사용자 편의성 향상</li>
                   </ul>
                 </article>
                 <article class="detail-duo-card">
                   <h3>성장 및 배움</h3>
                   <ul class="detail-list">
-                    <li>크롤링 파이프라인 안정화와 구조 변경 대응 경험</li>
-                    <li>이기종 백엔드 통합 및 API 설계의 중요성 체득</li>
-                    <li>데이터 수집 → 정제 → 시각화 전 과정 운영 경험</li>
-                    <li>정보 구조화와 사용자 탐색 흐름 설계 역량 강화</li>
+                    <li>크롤링부터 DB 적재까지 자동화를 직접 설계하며 데이터 파이프라인 흐름을 이해</li>
+                    <li>Django와 Spring을 연결하며 API 구조와 에러 처리의 중요성을 배움</li>
+                    <li>팀 작업에서 일정 관리와 작업 분해의 필요성을 체감하고 습관화</li>
                   </ul>
                 </article>
               </div>
@@ -227,7 +242,10 @@
           </section>
 
           <section id="demo" class="content-section detail-section">
-            <h2 class="section-title">프로젝트 시연 영상</h2>
+            <h2 class="section-title section-title--with-hint">
+              프로젝트 시연 영상
+              <span class="section-title-hint">클릭 시 처음부터 재생</span>
+            </h2>
             <div class="section-content">
               <div class="detail-duo">
                 <article class="detail-duo-card">
@@ -236,7 +254,6 @@
                     <button type="button" class="gif-restart" aria-label="크롤링 시연 클릭 시 처음부터 재생">
                       <img src="./image/kbo/crawling.gif" alt="크롤링 구조 변경 대응 시각화">
                     </button>
-                    <p class="gif-hint">클릭 시 처음부터 재생</p>
                   </div>
                 </article>
                 <article class="detail-duo-card">
@@ -245,7 +262,6 @@
                     <button type="button" class="gif-restart" aria-label="전체 프로젝트 시연 클릭 시 처음부터 재생">
                       <img src="./image/kbo/demo.gif" alt="KBO 프로젝트 시연 영상">
                     </button>
-                    <p class="gif-hint">클릭 시 처음부터 재생</p>
                   </div>
                 </article>
               </div>
