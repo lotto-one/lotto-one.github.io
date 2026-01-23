@@ -1361,12 +1361,17 @@ section:nth-child(6) { animation-delay: 0.8s; }
 .detail-ui-gallery--wide .image-zoom-button {
   display: block;
   aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(13, 18, 28, 0.7);
 }
 
 .detail-ui-gallery--wide img {
   height: 100%;
-  object-fit: contain;
-  background: rgba(13, 18, 28, 0.35);
+  object-fit: cover;
+  background: transparent;
+  border-radius: 0;
+  transform: scale(1.02);
 }
 
 .detail-duo {
@@ -1397,6 +1402,19 @@ section:nth-child(6) { animation-delay: 0.8s; }
   margin: 0 0 10px 0;
   font-size: 17px;
   color: #8fb4ff;
+}
+
+.detail-card-title--with-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detail-card-hint {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 500;
+  color: #93a4b9;
 }
 
 .detail-duo-card .detail-list {
