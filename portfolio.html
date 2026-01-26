@@ -62,7 +62,9 @@
                 <p class="hero-role">백엔드 개발자</p>
                 
                 <p class="hero-description">
-                  사용자 흐름을 이해하고<br> 이를 설계에 반영하는 개발자입니다.
+                  백엔드로 데이터 흐름을 설계하고<br>
+                  사용자 관점의 사용성을 함께 고민하는<br>
+                  문제 해결에 끝까지 집중하는 개발자입니다
                 </p>
                 <div class="hero-links">
                   <button type="button" class="hero-link contact-copy" data-copy="lottone27@naver.com" aria-label="이메일 주소 복사">
@@ -181,7 +183,22 @@
           </div>
           <div class="project-media">
             <div class="project-image-placeholder">
-              <img src="./notion/개인 페이지 &amp; 공유된 페이지/personal/7.png" alt="AI 이미지 분석 프로젝트 미리보기">
+              <img src="./image/personal/perosnal.png" alt="AI 이미지 분석 프로젝트 미리보기">
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card" data-href="project-mentoring.html">
+          <div class="project-body">
+            <h3 class="project-title">멘토링 프로젝트</h3>
+            <p class="project-meta">프로젝트 기간</p>
+            <p class="project-desc">내용 준비중</p>
+            <div class="project-tags"></div>
+            <div class="project-links"></div>
+          </div>
+          <div class="project-media">
+            <div class="project-image-placeholder">
+              <span>이미지 준비중</span>
             </div>
           </div>
         </article>
@@ -255,10 +272,30 @@
             <span class="period">2025.01 ~ 재직중</span>
           </div>
           <p class="position">백엔드 개발자</p>
-          <p class="description">스마트팩토리 MES 웹서비스 백엔드 개발 및 운영</p>
-          <p class="description">RESTful API 설계·구현 및 생산 데이터 연동</p>
-          <p class="description">현장 공정용 태블릿 UI(Thymeleaf) 개발 및 실제 공장 적용</p>
-          <p class="description">AI 골프 캐디 R&D 과제 참여 (CNN 모델 커스터마이징)</p>
+          <p class="description description-title">주요 업무: 스마트팩토리 MES 시스템 구축 및 고도화 (2025.01 ~ 재직 중)</p>
+          <p class="description description-title">주요 성과 및 업무</p>
+          <ul class="detail-list">
+            <li>Spring Boot, MyBatis 기반의 생산 관리 시스템(MES) 백엔드 설계 및 구현</li>
+            <li>IoT 기기(PLC) 및 RFID 미들웨어를 통한 실시간 생산 데이터 수집 파이프라인 구축</li>
+            <li>시스템 부하 감소 및 사용자 경험(UX) 개선을 위한 기술적 최적화 수행</li>
+          </ul>
+          <p class="description description-title">기술적 문제 해결 및 기여</p>
+          <ul class="detail-list">
+            <li>[성능 최적화] 기존의 매초 단위 HTTP Polling 방식의 데이터 조회를 WebSocket 기반 실시간 푸시 방식으로 전환하여 서버 트래픽 약 80% 이상 절감 및 데이터 반영 속도 개선</li>
+            <li>[데이터 연동] RFID 미들웨어와의 연동 인터페이스 설계(5분 주기 데이터 동기화) 및 PLC 설비 데이터 실시간 수집 로직 구현</li>
+            <li>[현장 밀착 대응] 현장 공정 변수 및 사용자 조작 실수(되돌리기 등)에 대한 예외 처리 로직을 강화하여 시스템 안정성 확보</li>
+            <li>[UI/UX] Thymeleaf를 활용한 현장용 태블릿 UI 개발 및 현장 피드백을 즉각 반영하는 애자일한 수정 프로세스 주도</li>
+          </ul>
+          <p class="description description-title">서브 프로젝트: AI 기반 골프 캐디 R&amp;D 과제</p>
+          <p class="description description-title">주요 성과 및 업무</p>
+          <ul class="detail-list">
+            <li>YOLOv10 기반 실시간 장애물 인식 모델 개발 참여</li>
+          </ul>
+          <p class="description description-title">기술적 문제 해결 및 기여</p>
+          <ul class="detail-list">
+            <li>[모델 고도화] 골프장 환경에 특화된 3개 클래스(Water, Tree, Bench) 데이터를 직접 수집 및 Bounding Box 라벨링 수행</li>
+            <li>[기술적 이슈 해결] 추가 학습 시 기존 학습 데이터 정보가 손실되는 Backbone/Forgetting 현상을 해결하기 위해 COCO 데이터셋 전체와 커스텀 데이터를 통합 학습시켜 모델의 범용 성능 유지 및 정확도 향상</li>
+          </ul>
           
         </div>
         

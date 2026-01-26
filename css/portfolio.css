@@ -17,11 +17,14 @@
 
 /* 전체 터미널 컨테이너 */
 body {
-  padding: 20px !important;
+  padding: clamp(16px, 3vh, 32px) !important;
   margin: 0 !important;
   overflow-x: hidden;
   background: var(--bg);
-  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .terminal-container {
@@ -35,7 +38,40 @@ body {
   height: clamp(640px, 92vh, 900px);
   width: clamp(320px, 92vw, 1200px);
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
+}
+
+@media (max-height: 760px) {
+  body {
+    align-items: flex-start;
+  }
+}
+
+@media (min-width: 1400px) and (min-height: 900px) {
+  .terminal-container {
+    height: clamp(700px, 94vh, 1040px);
+    width: clamp(480px, 94vw, 1400px);
+  }
+
+  .sidebar {
+    width: 320px;
+  }
+
+  .sidebar-section-title {
+    font-size: 12px;
+  }
+
+  .sidebar nav a {
+    font-size: 17px;
+  }
+
+  .nav-text {
+    font-size: 16px;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+  }
 }
 
 @keyframes fadeIn {
@@ -146,7 +182,7 @@ body {
   text-transform: uppercase;
   color: #6b7280;
   padding: 6px 12px 8px 12px;
-  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-family: 'Georgia', 'Times New Roman', serif;
 }
 
 .sidebar nav a {
@@ -298,11 +334,12 @@ body {
 }
 
 .hero-description {
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 2.2;
   color: var(--text);
   margin: 0;
   max-width: 600px;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
 }
 
 .hero-simple-row {
@@ -869,11 +906,12 @@ section:nth-child(6) { animation-delay: 0.8s; }
 }
 
 .hero-description {
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 2.1;
   color: #ccd6e4;
   margin: 0;
   max-width: 520px;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
 }
 
 .hero-meta {
@@ -1265,6 +1303,10 @@ section:nth-child(6) { animation-delay: 0.8s; }
   font-size: 18px;
   font-weight: 400;
   padding: 0;
+}
+
+.detail-paragraph--compact {
+  font-size: 16px;
 }
 
 .detail-subtitle {
@@ -1879,6 +1921,20 @@ section:nth-child(6) { animation-delay: 0.8s; }
   color: #8b949e;
   line-height: 1.7;
   margin: 0;
+}
+
+.description-title {
+  margin-top: 12px;
+  color: #d4dde8;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.timeline .detail-list {
+  font-size: 14px;
+  color: #8b949e;
+  gap: 8px;
+  margin: 6px 0 10px 0;
 }
 
 /* Education 섹션 */
